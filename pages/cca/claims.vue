@@ -10,11 +10,12 @@
                 <v-card>
                     <v-tabs fixed-tabs background-color="#3750EB" dark v-model="tabs">
                         <v-tab href="#tab-1">All</v-tab>
-                        <v-tab href="#tab-5">Approved For Payment</v-tab>
-                        <v-tab href="#tab-5">Disapproved For Payment</v-tab>
                         <v-tab href="#tab-2">Approved By Insurance Firms</v-tab>
                         <v-tab href="#tab-3">Disapproved By Insurance Firms</v-tab>
-                        <v-tab href="#tab-4">Agent/Broke/Sales Rep Claims</v-tab>
+                        <v-tab href="#tab-4">Approved For Payment</v-tab>
+                        <v-tab href="#tab-5">Disapproved For Payment</v-tab>
+
+
 
                     </v-tabs>
                     <v-tabs-items v-model="tabs">
@@ -37,74 +38,26 @@
                                     <v-data-table :headers="claims.headers" :items="claims.details" :items-per-page="10"
                                         class="elevation-1">
                                         <template v-slot:item.status="{ item }">
-                                            <v-chip :color="getClaimStatus(claims.details.status)" dark>
-                                                {{ claims.details.status === 1 ? "Approved" : "Pending Approval" }}
+                                            <v-chip :color="getClaimStatus(item.status)" dark v-if="item.status === 0">
+                                                Pending Insurance Approval
                                             </v-chip>
-                                        </template>
-                                        <template v-slot:item.actions="{ item }">
-                                            <v-icon small class="mr-2" @click="editPolicy(item)">
-                                                {{ icons.mdiDotsVertical }}
-                                            </v-icon>
-                                        </template>
-                                    </v-data-table>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                        <v-tab-item value="tab-5">
-
-                            <v-card flat>
-                                <v-card-title class="d-flex justify-end">
-                                    <v-btn color="primary" dark v-bind="attrs" v-on="on">
-                                        <v-icon left>
-                                            {{ icons.mdiMicrosoftExcel }}
-                                        </v-icon>
-                                        Export Excel Report
-                                    </v-btn>
-                                </v-card-title>
-
-                                <v-card-title>
-                                    <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" single-line
-                                        hide-details></v-text-field>
-                                </v-card-title>
-                                <v-card-text>
-                                    <v-data-table :headers="claims.headers" :items="claims.details" :items-per-page="10"
-                                        class="elevation-1">
-                                        <template v-slot:item.status="{ item }">
-                                            <v-chip :color="getClaimStatus(claims.details.status)" dark>
-                                                {{ claims.details.status === 1 ? "Approved" : "Pending Approval" }}
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 1">
+                                                Approved By Insurance
                                             </v-chip>
-                                        </template>
-                                        <template v-slot:item.actions="{ item }">
-                                            <v-icon small class="mr-2" @click="editPolicy(item)">
-                                                {{ icons.mdiDotsVertical }}
-                                            </v-icon>
-                                        </template>
-                                    </v-data-table>
-                                </v-card-text>
-                            </v-card>
-                        </v-tab-item>
-                        <v-tab-item value="tab-6">
-                            <v-card flat>
-                                <v-card-title class="d-flex justify-end">
-                                    <v-btn color="primary" dark v-bind="attrs" v-on="on">
-                                        <v-icon left>
-                                            {{ icons.mdiMicrosoftExcel }}
-                                        </v-icon>
-                                        Export Excel Report
-                                    </v-btn>
-                                </v-card-title>
-
-                                <v-card-title>
-                                    <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" single-line
-                                        hide-details></v-text-field>
-                                </v-card-title>
-                                <v-card-text>
-                                    <v-data-table :headers="claims.headers" :items="claims.details" :items-per-page="10"
-                                        class="elevation-1">
-                                        <template v-slot:item.status="{ item }">
-                                            <v-chip :color="getClaimStatus(claims.details.status)" dark>
-                                                {{ claims.details.status === 1 ? "Approved" : "Pending Approval" }}
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 2">
+                                                Rejected By Insurance
                                             </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 3">
+                                                Approved For Payment
+                                            </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 4">
+                                                Payment Rejected
+                                            </v-chip>
+
                                         </template>
                                         <template v-slot:item.actions="{ item }">
                                             <v-icon small class="mr-2" @click="editPolicy(item)">
@@ -116,6 +69,7 @@
                             </v-card>
                         </v-tab-item>
                         <v-tab-item value="tab-2">
+
                             <v-card flat>
                                 <v-card-title class="d-flex justify-end">
                                     <v-btn color="primary" dark v-bind="attrs" v-on="on">
@@ -131,12 +85,29 @@
                                         hide-details></v-text-field>
                                 </v-card-title>
                                 <v-card-text>
-                                    <v-data-table :headers="claims.headers" :items="claims.details" :items-per-page="10"
-                                        class="elevation-1">
+                                    <v-data-table :headers="claims.headers" :items="insuranceApproved"
+                                        :items-per-page="10" class="elevation-1">
                                         <template v-slot:item.status="{ item }">
-                                            <v-chip :color="getClaimStatus(claims.details.status)" dark>
-                                                {{ claims.details.status === 2 ? "Approved" : "Pending Approval" }}
+                                            <v-chip :color="getClaimStatus(item.status)" dark v-if="item.status === 0">
+                                                Pending Insurance Approval
                                             </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 1">
+                                                Approved By Insurance
+                                            </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 2">
+                                                Rejected By Insurance
+                                            </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 3">
+                                                Approved For Payment
+                                            </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 4">
+                                                Payment Rejected
+                                            </v-chip>
+
                                         </template>
                                         <template v-slot:item.actions="{ item }">
                                             <v-icon small class="mr-2" @click="editPolicy(item)">
@@ -162,14 +133,30 @@
                                     <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" single-line
                                         hide-details></v-text-field>
                                 </v-card-title>
-
                                 <v-card-text>
-                                    <v-data-table :headers="claims.headers" :items="claims.details" :items-per-page="10"
-                                        class="elevation-1">
+                                    <v-data-table :headers="claims.headers" :items="insuranceDisapproved"
+                                        :items-per-page="10" class="elevation-1">
                                         <template v-slot:item.status="{ item }">
-                                            <v-chip :color="getClaimStatus(claims.details.status)" dark>
-                                                {{ claims.details.status === 1 ? "Approved" : "Pending Approval" }}
+                                            <v-chip :color="getClaimStatus(item.status)" dark v-if="item.status === 0">
+                                                Pending Insurance Approval
                                             </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 1">
+                                                Approved By Insurance
+                                            </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 2">
+                                                Rejected By Insurance
+                                            </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 3">
+                                                Approved For Payment
+                                            </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 4">
+                                                Payment Rejected
+                                            </v-chip>
+
                                         </template>
                                         <template v-slot:item.actions="{ item }">
                                             <v-icon small class="mr-2" @click="editPolicy(item)">
@@ -196,12 +183,29 @@
                                         hide-details></v-text-field>
                                 </v-card-title>
                                 <v-card-text>
-                                    <v-data-table :headers="claims.headers" :items="claims.details" :items-per-page="10"
+                                    <v-data-table :headers="claims.headers" :items="cfaApproved" :items-per-page="10"
                                         class="elevation-1">
                                         <template v-slot:item.status="{ item }">
-                                            <v-chip :color="getClaimStatus(claims.details.status)" dark>
-                                                {{ claims.details.status === 1 ? "Approved" : "Pending Approval" }}
+                                            <v-chip :color="getClaimStatus(item.status)" dark v-if="item.status === 0">
+                                                Pending Insurance Approval
                                             </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 1">
+                                                Approved By Insurance
+                                            </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 2">
+                                                Rejected By Insurance
+                                            </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 3">
+                                                Approved For Payment
+                                            </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 4">
+                                                Payment Rejected
+                                            </v-chip>
+
                                         </template>
                                         <template v-slot:item.actions="{ item }">
                                             <v-icon small class="mr-2" @click="editPolicy(item)">
@@ -212,6 +216,57 @@
                                 </v-card-text>
                             </v-card>
                         </v-tab-item>
+                        <v-tab-item value="tab-5">
+                            <v-card flat>
+                                <v-card-title class="d-flex justify-end">
+                                    <v-btn color="primary" dark v-bind="attrs" v-on="on">
+                                        <v-icon left>
+                                            {{ icons.mdiMicrosoftExcel }}
+                                        </v-icon>
+                                        Export Excel Report
+                                    </v-btn>
+                                </v-card-title>
+
+                                <v-card-title>
+                                    <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" single-line
+                                        hide-details></v-text-field>
+                                </v-card-title>
+
+                                <v-card-text>
+                                    <v-data-table :headers="claims.headers" :items="cfaDisapproved" :items-per-page="10"
+                                        class="elevation-1">
+                                        <template v-slot:item.status="{ item }">
+                                            <v-chip :color="getClaimStatus(item.status)" dark v-if="item.status === 0">
+                                                Pending Insurance Approval
+                                            </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 1">
+                                                Approved By Insurance
+                                            </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 2">
+                                                Rejected By Insurance
+                                            </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 3">
+                                                Approved For Payment
+                                            </v-chip>
+                                            <v-chip :color="getClaimStatus(item.status)" dark
+                                                v-else-if="item.status === 4">
+                                                Payment Rejected
+                                            </v-chip>
+
+                                        </template>
+                                        <template v-slot:item.actions="{ item }">
+                                            <v-icon small class="mr-2" @click="editPolicy(item)">
+                                                {{ icons.mdiDotsVertical }}
+                                            </v-icon>
+                                        </template>
+                                    </v-data-table>
+                                </v-card-text>
+                            </v-card>
+                        </v-tab-item>
+
                     </v-tabs-items>
                 </v-card>
 
@@ -420,7 +475,7 @@ export default {
                         name: 'Mwangaza Roshanee Agency',
                         phoneNumber: "0110 101 102",
                         location: "Ruiru",
-                        status: 0,
+                        status: 4,
                         insuranceCompany: "Jubilee Insurance",
                         policyType: "Medical Insurance",
                         policyNo: "001",
@@ -442,7 +497,7 @@ export default {
                         name: 'Mwangaza Roshanee Agency',
                         phoneNumber: "0110 101 102",
                         location: "Ruiru",
-                        status: 0,
+                        status: 1,
                         insuranceCompany: "Jubilee Insurance",
                         policyType: "Medical Insurance",
                         policyNo: "001",
@@ -453,7 +508,7 @@ export default {
                         name: 'Mwangaza Roshanee Agency',
                         phoneNumber: "0110 101 102",
                         location: "Ruiru",
-                        status: 0,
+                        status: 2,
                         insuranceCompany: "Jubilee Insurance",
                         policyType: "Medical Insurance",
                         policyNo: "001",
@@ -464,7 +519,7 @@ export default {
                         name: 'Mwangaza Roshanee Agency',
                         phoneNumber: "0110 101 102",
                         location: "Ruiru",
-                        status: 0,
+                        status: 3,
                         insuranceCompany: "Jubilee Insurance",
                         policyType: "Medical Insurance",
                         policyNo: "001",
@@ -475,7 +530,7 @@ export default {
                         name: 'Mwangaza Roshanee Agency',
                         phoneNumber: "0110 101 102",
                         location: "Ruiru",
-                        status: 0,
+                        status: 4,
                         insuranceCompany: "Jubilee Insurance",
                         policyType: "Medical Insurance",
                         policyNo: "001",
@@ -499,12 +554,36 @@ export default {
             dialogEditClaim: false
         }
     },
+    computed: {
+        insuranceApproved() {
+            if (this.claims.details.length > 0) {
+                return this.claims.details.filter(claim => claim.status === 1)
+            }
+        },
+        insuranceDisapproved() {
+            if (this.claims.details.length > 0) {
+                return this.claims.details.filter(claim => claim.status === 2)
+            }
+        },
+        cfaApproved() {
+            if (this.claims.details.length > 0) {
+                return this.claims.details.filter(claim => claim.status === 3)
+            }
+        },
+        cfaDisapproved() {
+            if (this.claims.details.length > 0) {
+                return this.claims.details.filter(claim => claim.status === 4)
+            }
+        }
+    },
     methods: {
         getClaimStatus(status) {
-            if (status === 0) return 'red'
+
+            if (status === 0) return 'orange'
             else if (status === 1) return 'green'
-            else if (status === 2) return 'blue'
-            else return 'red'
+            else if (status === 2) return 'red'
+            else if (status === 3) return 'blue'
+            else return 'black'
         },
         editPolicy(item) {
             this.editedFirmIndex = this.claims.details.indexOf(item)

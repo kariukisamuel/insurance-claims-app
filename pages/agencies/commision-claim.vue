@@ -435,111 +435,155 @@
                             </v-btn>
                             <v-toolbar-title>Commission Claim Details</v-toolbar-title>
                         </v-toolbar>
+
+                        <v-card-text>
+                            <v-container>
+                                <v-row class="py-2">
+                                    <v-col cols="12">
+
+                                        <template>
+                                            <v-stepper>
+                                                <v-stepper-header>
+                                                    <v-stepper-step complete step="1">
+                                                        Pending Insurance Approval
+                                                    </v-stepper-step>
+
+                                                    <v-divider></v-divider>
+
+                                                    <v-stepper-step step="2" >
+                                                        Approved By Insurance
+                                                    </v-stepper-step>
+
+                                                    <v-divider></v-divider>
+
+                                                    <v-stepper-step step="3">
+                                                        Approved For Payment
+                                                    </v-stepper-step>
+                                                </v-stepper-header>
+                                            </v-stepper>
+                                        </template>
+                                    </v-col>
+
+                                </v-row>
+                            </v-container>
+                        </v-card-text>
                         <v-card-text>
                             <v-container>
                                 <v-row class="py-4">
-                                    <v-expansion-panels>
-                                        <v-expansion-panel key="1">
-                                            <v-expansion-panel-header>
-                                                Agency/Brokerage Name
-                                            </v-expansion-panel-header>
-                                            <v-expansion-panel-content>
-                                                {{ editedClaims.name }}
-                                            </v-expansion-panel-content>
-                                        </v-expansion-panel>
-                                        <v-expansion-panel key="2">
-                                            <v-expansion-panel-header>
-                                                Agency/Brokerage Phone Number
-                                            </v-expansion-panel-header>
-                                            <v-expansion-panel-content>
-                                                {{ editedClaims.phoneNumber }}
-                                            </v-expansion-panel-content>
-                                        </v-expansion-panel>
-                                        <v-expansion-panel key="3">
-                                            <v-expansion-panel-header>
-                                                Location
-                                            </v-expansion-panel-header>
-                                            <v-expansion-panel-content>
-                                                {{ editedClaims.location }}
-                                            </v-expansion-panel-content>
-                                        </v-expansion-panel>
-                                        <v-expansion-panel key="3">
-                                            <v-expansion-panel-header>
-                                                Insurance Company
-                                            </v-expansion-panel-header>
-                                            <v-expansion-panel-content>
-                                                {{ editedClaims.insuranceCompany }}
-                                            </v-expansion-panel-content>
-                                        </v-expansion-panel>
-                                        <v-expansion-panel key="4">
-                                            <v-expansion-panel-header>
-                                                Policy Type
-                                            </v-expansion-panel-header>
-                                            <v-expansion-panel-content>
-                                                {{ editedClaims.policyType }}
-                                            </v-expansion-panel-content>
-                                        </v-expansion-panel>
-                                        <v-expansion-panel key="5">
-                                            <v-expansion-panel-header>
-                                                Policy No
-                                            </v-expansion-panel-header>
-                                            <v-expansion-panel-content>
-                                                {{ editedClaims.policyNo }}
-                                            </v-expansion-panel-content>
-                                        </v-expansion-panel>
-                                        <v-expansion-panel key="5">
-                                            <v-expansion-panel-header>
-                                                Policy Value
-                                            </v-expansion-panel-header>
-                                            <v-expansion-panel-content>
-                                                {{ editedClaims.policyValue }}
-                                            </v-expansion-panel-content>
-                                        </v-expansion-panel>
-                                        <v-expansion-panel key="5">
-                                            <v-expansion-panel-header>
-                                                Commission Value
-                                            </v-expansion-panel-header>
-                                            <v-expansion-panel-content>
-                                                {{ editedClaims.commisionValue }}
-                                            </v-expansion-panel-content>
-                                        </v-expansion-panel>
-
-                                        <v-expansion-panel key="6">
-                                            <v-expansion-panel-header>
-                                                Commission Payment Status
-                                            </v-expansion-panel-header>
-                                            <v-expansion-panel-content>
-                                                {{ editedClaims.status }}
-                                            </v-expansion-panel-content>
-                                        </v-expansion-panel>
-
-                                        <v-expansion-panel key="6">
-                                            <v-expansion-panel-header>
-                                                Uploads
-                                            </v-expansion-panel-header>
-                                            <v-expansion-panel-content>
-                                                <img src="https://via.placeholder.com/500" />
-                                            </v-expansion-panel-content>
-                                        </v-expansion-panel>
-                                    </v-expansion-panels>
-
-                                </v-row>
-                                <v-row>
                                     <v-col cols="12">
-                                        <v-btn tile color="primary">
-                                            <v-icon left>
-                                                {{ icons.mdiAccountCheck }}
-                                            </v-icon>
-                                            Approve Payment
-                                        </v-btn>
-                                        <v-btn tile color="error">
-                                            <v-icon left>
-                                                {{ icons.mdiAccountCancel }}
-                                            </v-icon>
-                                            Disapprove Payment
-                                        </v-btn>
+                                        <v-expansion-panels>
+                                            <v-expansion-panel key="1">
+                                                <v-expansion-panel-header>
+                                                    Type Of Policy
+                                                </v-expansion-panel-header>
+                                                <v-expansion-panel-content>
+                                                    {{ editedClaims.typeOfPolicy }}
+                                                </v-expansion-panel-content>
+                                            </v-expansion-panel>
+                                            <v-expansion-panel key="2">
+                                                <v-expansion-panel-header>
+                                                    Insurance Company
+                                                </v-expansion-panel-header>
+                                                <v-expansion-panel-content>
+                                                    {{ editedClaims.insurance }}
+                                                </v-expansion-panel-content>
+                                            </v-expansion-panel>
+                                            <v-expansion-panel key="3">
+                                                <v-expansion-panel-header>
+                                                    Policy No
+                                                </v-expansion-panel-header>
+                                                <v-expansion-panel-content>
+                                                    {{ editedClaims.policyNo }}
+                                                </v-expansion-panel-content>
+                                            </v-expansion-panel>
+                                            <v-expansion-panel key="7">
+                                                <v-expansion-panel-header>
+                                                    Policy Uploads
+                                                </v-expansion-panel-header>
+                                                <v-expansion-panel-content>
+                                                    <img src="https://via.placeholder.com/500" />
+                                                </v-expansion-panel-content>
+                                            </v-expansion-panel>
+                                            <v-expansion-panel key="3">
+                                                <v-expansion-panel-header>
+                                                    Policy Period
+                                                </v-expansion-panel-header>
+                                                <v-expansion-panel-content>
+                                                    {{ editedClaims.policyPeriod }}
+                                                </v-expansion-panel-content>
+                                            </v-expansion-panel>
+                                            <v-expansion-panel key="4">
+                                                <v-expansion-panel-header>
+                                                    Premiums
+                                                </v-expansion-panel-header>
+                                                <v-expansion-panel-content>
+                                                    {{ editedClaims.premiums }}
+                                                </v-expansion-panel-content>
+                                            </v-expansion-panel>
+                                            <v-expansion-panel key="5">
+                                                <v-expansion-panel-header>
+                                                    Commision
+                                                </v-expansion-panel-header>
+                                                <v-expansion-panel-content>
+                                                    {{ editedClaims.commision }}
+                                                </v-expansion-panel-content>
+                                            </v-expansion-panel>
+                                            <v-expansion-panel key="5">
+                                                <v-expansion-panel-header>
+                                                    Invoice No
+                                                </v-expansion-panel-header>
+                                                <v-expansion-panel-content>
+                                                    {{ editedClaims.invoiceNo }}
+                                                </v-expansion-panel-content>
+                                            </v-expansion-panel>
+                                            <v-expansion-panel key="5">
+                                                <v-expansion-panel-header>
+                                                    Status
+                                                </v-expansion-panel-header>
+                                                <v-expansion-panel-content>
+
+
+                                                    <v-chip :color="getClaimStatus(editedClaims.status)" dark
+                                                        v-if="editedClaims.status === 0">
+                                                        Pending Insurance Approval
+                                                    </v-chip>
+                                                    <v-chip :color="getClaimStatus(editedClaims.status)" dark
+                                                        v-else-if="editedClaims.status === 1">
+                                                        Approved By Insurance
+                                                    </v-chip>
+                                                    <v-chip :color="getClaimStatus(editedClaims.status)" dark
+                                                        v-else-if="editedClaims.status === 2">
+                                                        Rejected By Insurance
+                                                    </v-chip>
+                                                    <v-chip :color="getClaimStatus(editedClaims.status)" dark
+                                                        v-else-if="editedClaims.status === 3">
+                                                        Approved For Payment
+                                                    </v-chip>
+                                                    <v-chip :color="getClaimStatus(editedClaims.status)" dark
+                                                        v-else-if="editedClaims.status === 4">
+                                                        Payment Rejected
+                                                    </v-chip>
+
+
+
+                                                </v-expansion-panel-content>
+                                            </v-expansion-panel>
+
+
+                                            <v-expansion-panel key="6">
+                                                <v-expansion-panel-header>
+                                                    Invoice Uploads
+                                                </v-expansion-panel-header>
+                                                <v-expansion-panel-content>
+                                                    <img src="https://via.placeholder.com/500" />
+                                                </v-expansion-panel-content>
+                                            </v-expansion-panel>
+                                        </v-expansion-panels>
                                     </v-col>
+
+
                                 </v-row>
+
                             </v-container>
                         </v-card-text>
 
