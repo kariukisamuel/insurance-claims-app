@@ -1,5 +1,5 @@
 <template>
-    <v-toolbar elevation="4" color="#3750EB" class="d-flex justify-space-between ">
+    <v-card elevation="4" color="#3750EB" class="d-flex justify-space-between pa-5 align-center">
         <div>
             <img src="~/static/logoipsum-logo-38.svg" />
         </div>
@@ -25,7 +25,7 @@
             </div>
 
         </div>
-    </v-toolbar>
+    </v-card>
 </template>
 <style>
 .color-blue {
@@ -41,7 +41,7 @@
 }
 
 .bg-teal {
-     background-color: rgb(231 240 247);
+    background-color: rgb(231 240 247);
 }
 </style>
 <script>
@@ -51,7 +51,7 @@ export default {
     data() {
         return {
             icons: {
-               mdiCashFast
+                mdiCashFast
             }
         }
     },

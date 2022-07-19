@@ -161,7 +161,7 @@
 
                             <v-card>
                                 <v-toolbar dark color="primary">
-                                    <v-btn icon dark @click="dialog = false">
+                                    <v-btn icon dark @click="dialogEdit = false">
                                         <v-icon>mdi-close</v-icon>
                                     </v-btn>
                                     <v-toolbar-title>User Details</v-toolbar-title>
@@ -209,8 +209,8 @@
 
                                         </v-row>
                                         <v-row>
-                                            <v-col cols="4">
-                                                <v-btn tile color="primary">
+                                            <v-col cols="4" v-if="editedItem.status === 0">
+                                                <v-btn tile color="primary" >
                                                     <v-icon left>
                                                         {{ icons.mdiAccountCheck }}
                                                     </v-icon>
@@ -271,7 +271,7 @@
                                             :items-per-page="10" class="elevation-1">
                                             <template v-slot:item.status="{ item }">
                                                 <v-chip :color="getUserStatus(item.status)" dark>
-                                                    {{ item.status ? "Approved" : "Pending Approval" }}
+                                                    {{ item.status === 1 ? "Approved" : "Pending Approval" }}
                                                 </v-chip>
                                             </template>
                                             <template v-slot:item.actions="{ item }">
@@ -304,11 +304,11 @@
                                     </v-card-title>
 
                                     <v-card-text>
-                                        <v-data-table :headers="headers" :items="users" :items-per-page="10"
+                                        <v-data-table :headers="headers" :items="approvedUser" :items-per-page="10"
                                             class="elevation-1">
                                             <template v-slot:item.status="{ item }">
                                                 <v-chip :color="getUserStatus(item.status)" dark>
-                                                    {{ item.status ? "Approved" : "Pending Approval" }}
+                                                    {{ item.status === 1 ? "Approved" : "Pending Approval" }}
                                                 </v-chip>
                                             </template>
                                             <template v-slot:item.actions="{ item }">
@@ -340,11 +340,11 @@
                                             single-line hide-details></v-text-field>
                                     </v-card-title>
                                     <v-card-text>
-                                        <v-data-table :headers="headers" :items="users" :items-per-page="10"
+                                        <v-data-table :headers="headers" :items="disapprovedUser" :items-per-page="10"
                                             class="elevation-1">
                                             <template v-slot:item.status="{ item }">
                                                 <v-chip :color="getUserStatus(item.status)" dark>
-                                                    {{ item.status ? "Approved" : "Pending Approval" }}
+                                                    {{ item.status === 1 ? "Approved" : "Pending Approval" }}
                                                 </v-chip>
                                             </template>
                                             <template v-slot:item.actions="{ item }">
@@ -425,7 +425,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: true
+                    status: 0
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -434,7 +434,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: false
+                    status: 1
                 },
                 {
                     name: 'ICEA Agency',
@@ -443,7 +443,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: true
+                    status: 2
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -452,7 +452,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: false
+                    status: 0
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -461,7 +461,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: true
+                    status: 1
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -470,7 +470,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: false
+                    status: 2
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -479,7 +479,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: true
+                    status: 0
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -488,7 +488,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: false
+                    status: 1
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -497,7 +497,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: true
+                    status: 2
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -506,7 +506,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: false
+                    status: 0
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -515,7 +515,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: true
+                    status: 1
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -524,7 +524,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: false
+                    status: 2
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -533,7 +533,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: true
+                    status: 0
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -542,7 +542,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: false
+                    status: 1
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -551,7 +551,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: true
+                    status: 2
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -560,7 +560,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: false
+                    status: 0
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -569,7 +569,16 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: true
+                    status: 1
+                },
+                {
+                    name: 'ICEA Agency',
+                    phoneNumber: "0708091524",
+                    email: "inboxsamuel@outlook.com",
+                    location: "Mombasa Road",
+                    iraNo: "01565454",
+                    regNo: '01565454',
+                    status: 2
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -578,7 +587,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: false
+                    status: 0
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -587,7 +596,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: true
+                    status: 1
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -596,7 +605,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: false
+                    status: 2
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -605,7 +614,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: true
+                    status: 0
                 },
                 {
                     name: 'Mwangaza Roshanee Agency',
@@ -614,8 +623,72 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
-                    status: false
+                    status: 1
                 },
+                {
+                    name: 'Mwangaza Roshanee Agency',
+                    phoneNumber: "0708091524",
+                    email: "inboxsamuel@outlook.com",
+                    location: "Mombasa Road",
+                    iraNo: "01565454",
+                    regNo: '01565454',
+                    status: 2
+                },
+                {
+                    name: 'Mwangaza Roshanee Agency',
+                    phoneNumber: "0708091524",
+                    email: "inboxsamuel@outlook.com",
+                    location: "Mombasa Road",
+                    iraNo: "01565454",
+                    regNo: '01565454',
+                    status: 0
+                },
+                {
+                    name: 'Mwangaza Roshanee Agency',
+                    phoneNumber: "0708091524",
+                    email: "inboxsamuel@outlook.com",
+                    location: "Mombasa Road",
+                    iraNo: "01565454",
+                    regNo: '01565454',
+                    status: 1
+                },
+                {
+                    name: 'Mwangaza Roshanee Agency',
+                    phoneNumber: "0708091524",
+                    email: "inboxsamuel@outlook.com",
+                    location: "Mombasa Road",
+                    iraNo: "01565454",
+                    regNo: '01565454',
+                    status: 2
+                },
+                {
+                    name: 'Mwangaza Roshanee Agency',
+                    phoneNumber: "0708091524",
+                    email: "inboxsamuel@outlook.com",
+                    location: "Mombasa Road",
+                    iraNo: "01565454",
+                    regNo: '01565454',
+                    status: 0
+                },
+                {
+                    name: 'Mwangaza Roshanee Agency',
+                    phoneNumber: "0708091524",
+                    email: "inboxsamuel@outlook.com",
+                    location: "Mombasa Road",
+                    iraNo: "01565454",
+                    regNo: '01565454',
+                    status: 1
+                },
+                {
+                    name: 'Mwangaza Roshanee Agency',
+                    phoneNumber: "0708091524",
+                    email: "inboxsamuel@outlook.com",
+                    location: "Mombasa Road",
+                    iraNo: "01565454",
+                    regNo: '01565454',
+                    status: 2
+                },
+
 
 
             ],
@@ -631,10 +704,18 @@ export default {
             }
         }
     },
+    computed:{
+        approvedUser(){
+           return this.users.filter(user => user.status === 1)
+        },
+        disapprovedUser(){
+           return this.users.filter(user => user.status === 0)
+        }
+    },
     methods: {
         getUserStatus(status) {
-            if (status) return 'green'
-            else return 'red'
+            if (status === 0) return 'red'
+            else return 'green'
         },
         editItem(item) {
             this.editedIndex = this.users.indexOf(item)
