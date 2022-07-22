@@ -2,7 +2,7 @@
     <ccamenu />
 </template>
 
-<script>
+<script scoped>
 export default {
     name: 'CCAPage',
     data() {

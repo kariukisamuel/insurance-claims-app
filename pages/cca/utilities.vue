@@ -308,7 +308,7 @@
 
 
 </template>
-<style>
+<style scoped>
 .bg-teal {
     background-color: rgb(231 240 247);
 }

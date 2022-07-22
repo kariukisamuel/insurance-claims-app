@@ -378,7 +378,7 @@
     background-color: #3750EB;
 }
 </style>
-<script>
+<script scoped>
 import { mdiAccountMultiplePlus, mdiDotsVertical, mdiAccountCheck, mdiAccountCancel, mdiPencil, mdiMicrosoftExcel } from "@mdi/js";
 export default {
     name: "CcaUsersPage",

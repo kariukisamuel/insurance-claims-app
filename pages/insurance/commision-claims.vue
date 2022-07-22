@@ -347,7 +347,7 @@
 
 
 </template>
-<script>
+<script scoped>
 import { mdiDotsVertical, mdiMicrosoftExcel } from "@mdi/js";
 export default {
     name: 'InsuranceClaimsPage',

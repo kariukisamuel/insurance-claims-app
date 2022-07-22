@@ -398,7 +398,7 @@
     </v-container>
 
 </template>
-<script>
+<script scoped>
 import { mdiDotsVertical, mdiMicrosoftExcel } from "@mdi/js";
 
 export default {
