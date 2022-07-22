@@ -29,7 +29,7 @@
           </nuxt-link>
         </div>
         <div v-else-if="this.$route.query.user === 'payer'">
-          <nuxt-link to="/cca/users">
+          <nuxt-link to="/cca/claims">
             <v-btn rounded color="primary" block class="mt-5">
               Login
             </v-btn>
