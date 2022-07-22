@@ -1,100 +1,107 @@
 <template>
     <v-row>
         <v-col cols="12" class="full-height-background bg-blue d-flex justify-center align-center">
-            <v-card class="half-height-background bg-teal pa-10 rounded-lg">
-                <h2 class="text-center color-blue py-3">System Pages</h2>
-                <div class="py-2">
-                    <v-card class="mx-auto" max-width="400" tile>
-                        <h4 class="text-center py-3">Agency/Brokerage Pages</h4>
-                        <v-list-item>
-                            <v-list-item-content>
-                                <nuxt-link to="/register">
-                                    <v-list-item-title>Register</v-list-item-title>
-                                </nuxt-link>
 
-                            </v-list-item-content>
-                        </v-list-item>
-                        <v-list-item>
-                            <v-list-item-content>
-                                <nuxt-link to="/login">
-                                    <v-list-item-title>Login</v-list-item-title>
-                                </nuxt-link>
 
-                            </v-list-item-content>
-                        </v-list-item>
-                        <v-list-item>
-                            <v-list-item-content>
-                                <nuxt-link to="/agencies/commision-claim">
-                                    <v-list-item-title>Dashboard</v-list-item-title>
-                                </nuxt-link>
 
-                            </v-list-item-content>
-                        </v-list-item>
+            <v-card class=" bg-teal pa-10 rounded-lg">
+                <h2 class="text-center py-3">System Pages</h2>
+                <div class="d-flex justify-between">
+                    <div class="pa-2">
+                        <v-card class="mx-auto pa-5" tile>
+                            <h4 class="text-center py-3">Agency/Brokerage Pages</h4>
+                            <v-list-item>
+                                <v-list-item-content>
+                                    <nuxt-link to="/register">
+                                        <v-list-item-title>Register</v-list-item-title>
+                                    </nuxt-link>
 
-                    </v-card>
+                                </v-list-item-content>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-content>
+                                    <nuxt-link to="/login">
+                                        <v-list-item-title>Login</v-list-item-title>
+                                    </nuxt-link>
+
+                                </v-list-item-content>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-content>
+                                    <nuxt-link to="/agencies/commision-claim">
+                                        <v-list-item-title>Dashboard</v-list-item-title>
+                                    </nuxt-link>
+
+                                </v-list-item-content>
+                            </v-list-item>
+
+                        </v-card>
+                    </div>
+
+                    <div class="pa-2">
+                        <v-card class="mx-auto pa-5" tile>
+                            <h4 class="text-center py-3">Insurance Firm Pages</h4>
+                            <v-list-item>
+                                <v-list-item-content>
+                                    <nuxt-link to="/login">
+                                        <v-list-item-title>Login</v-list-item-title>
+                                    </nuxt-link>
+
+                                </v-list-item-content>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-content>
+                                    <nuxt-link to="/insurance/commision-claims">
+                                        <v-list-item-title>Dashboard</v-list-item-title>
+                                    </nuxt-link>
+
+                                </v-list-item-content>
+                            </v-list-item>
+
+                        </v-card>
+                    </div>
+
+                    <div class="pa-2">
+                        <v-card class="mx-auto pa-5" tile>
+                            <h4 class="text-center py-3">Commision Settler Pages</h4>
+                            <v-list-item>
+                                <v-list-item-content>
+                                    <nuxt-link to="/login">
+                                        <v-list-item-title>Login</v-list-item-title>
+                                    </nuxt-link>
+
+                                </v-list-item-content>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-content>
+                                    <nuxt-link to="/cca/claims">
+                                        <v-list-item-title>Commision Claims</v-list-item-title>
+                                    </nuxt-link>
+
+                                </v-list-item-content>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-content>
+                                    <nuxt-link to="/cca/users">
+                                        <v-list-item-title>Users</v-list-item-title>
+                                    </nuxt-link>
+
+                                </v-list-item-content>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-content>
+                                    <nuxt-link to="/cca/claims">
+                                        <v-list-item-title>Utilities</v-list-item-title>
+                                    </nuxt-link>
+
+                                </v-list-item-content>
+                            </v-list-item>
+
+                        </v-card>
+                    </div>
+
                 </div>
 
-                <div class="py-2">
-                    <v-card class="mx-auto" max-width="400" tile>
-                        <h4 class="text-center py-3">Insurance Firm Pages</h4>
-                        <v-list-item>
-                            <v-list-item-content>
-                                <nuxt-link to="/login">
-                                    <v-list-item-title>Login</v-list-item-title>
-                                </nuxt-link>
-
-                            </v-list-item-content>
-                        </v-list-item>
-                        <v-list-item>
-                            <v-list-item-content>
-                                <nuxt-link to="/insurance/commision-claims">
-                                    <v-list-item-title>Dashboard</v-list-item-title>
-                                </nuxt-link>
-
-                            </v-list-item-content>
-                        </v-list-item>
-
-                    </v-card>
-                </div>
-
-                <div class="py-2">
-                    <v-card class="mx-auto" max-width="400" tile>
-                        <h4 class="text-center py-3">Commision Settler Pages</h4>
-                        <v-list-item>
-                            <v-list-item-content>
-                                <nuxt-link to="/login">
-                                    <v-list-item-title>Login</v-list-item-title>
-                                </nuxt-link>
-
-                            </v-list-item-content>
-                        </v-list-item>
-                        <v-list-item>
-                            <v-list-item-content>
-                                <nuxt-link to="/cca/claims">
-                                    <v-list-item-title>Commision Claims</v-list-item-title>
-                                </nuxt-link>
-
-                            </v-list-item-content>
-                        </v-list-item>
-                        <v-list-item>
-                            <v-list-item-content>
-                                <nuxt-link to="/cca/users">
-                                    <v-list-item-title>Users</v-list-item-title>
-                                </nuxt-link>
-
-                            </v-list-item-content>
-                        </v-list-item>
-                        <v-list-item>
-                            <v-list-item-content>
-                                <nuxt-link to="/cca/claims">
-                                    <v-list-item-title>Utilities</v-list-item-title>
-                                </nuxt-link>
-
-                            </v-list-item-content>
-                        </v-list-item>
-
-                    </v-card>
-                </div>
 
             </v-card>
         </v-col>
