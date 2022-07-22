@@ -1,22 +1,40 @@
 <template>
   <v-row>
-    <v-col cols="12" sm="12" md="12" class="full-height-background bg-blue d-flex justify-center align-center" >
+    <v-col cols="12" sm="12" md="12" class="full-height-background bg-blue d-flex justify-center align-center">
       <v-card class="half-height-background bg-teal pa-10 rounded-lg">
         <h1 class="text-center color-blue">Login</h1>
         <p class="text-center py-3">Welcome to the Insurance Commision Claims App.</p>
-        
+
 
         <v-text-field v-model="email" color="purple darken-2" label="Email" required>
         </v-text-field>
         <v-text-field v-model="password" :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-          :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1"
-          label="Password" hint="At least 8 characters" counter @click:append="show1 = !show1">
+          :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1" label="Password"
+          hint="At least 8 characters" counter @click:append="show1 = !show1">
         </v-text-field>
         <p>Did you <a href="" class="color-blue text-decoration-none">forget your password?</a></p>
-        <v-btn rounded color="primary" block class="mt-5">
-          Login
-        </v-btn>
 
+        <div v-if="this.$route.query.user === 'agency'">
+          <nuxt-link to="/agencies/commision-claim">
+            <v-btn rounded color="primary" block class="mt-5">
+              Login
+            </v-btn>
+          </nuxt-link>
+        </div>
+        <div v-if="this.$route.query.user === 'insurance'">
+          <nuxt-link to="/insurance/commision-claims">
+            <v-btn rounded color="primary" block class="mt-5">
+              Login
+            </v-btn>
+          </nuxt-link>
+        </div>
+        <div v-if="this.$route.query.user === 'payer'">
+          <nuxt-link to="/cca/users">
+            <v-btn rounded color="primary" block class="mt-5">
+              Login
+            </v-btn>
+          </nuxt-link>
+        </div>
       </v-card>
     </v-col>
   </v-row>
@@ -31,8 +49,9 @@
 .half-height-background {
   width: 40vw;
 }
-.color-blue{
-    color: #3750EB;
+
+.color-blue {
+  color: #3750EB;
 }
 
 .bg-blue {
@@ -40,12 +59,13 @@
 }
 
 .bg-teal {
-   background-color: rgb(231 240 247);
+  background-color: rgb(231 240 247);
 }
 </style>
 <script>
 export default {
   name: 'LoginPage',
+
   data() {
     return {
       email: "",

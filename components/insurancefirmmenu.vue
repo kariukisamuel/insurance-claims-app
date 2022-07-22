@@ -4,7 +4,7 @@
             <img src="~/static/logoipsum-logo-38.svg" />
         </div>
         <div class="d-flex">
-            <div class="text-center">
+            <!-- <div class="text-center">
                 <a href="">
                     <v-icon aria-label="check all" role="img" aria-hidden="false" color="#fff" size="32"> {{
                             icons.mdiHome
@@ -13,7 +13,7 @@
                     <span class="color-white pa-5">Dashboard</span>
                 </a>
 
-            </div>
+            </div> -->
             <div class="text-center">
                 <NuxtLink to="/insurance/commision-claims">
                     <v-icon aria-label="check all" role="img" aria-hidden="false" color="#fff" size="32"> {{
