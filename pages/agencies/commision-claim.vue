@@ -63,7 +63,7 @@
                                                             </v-select>
                                                         </v-col>
                                                         <v-col cols="12">
-                                                            <v-select :items="insuranceCompanies" filled
+                                                            <v-select :items="insuranceTypes" filled
                                                                 label="What type of policy ?">
                                                             </v-select>
                                                         </v-col>
@@ -450,7 +450,7 @@
 
                                                     <v-divider></v-divider>
 
-                                                    <v-stepper-step step="2" >
+                                                    <v-stepper-step step="2">
                                                         Approved By Insurance
                                                     </v-stepper-step>
 
@@ -622,6 +622,13 @@ export default {
                 'Continental Reinsurance Limited',
                 'Corporate Insurance Company Limited',
                 'Directline Assurance Company Limited'],
+            insuranceTypes: [
+                'Life Insurance',
+                'Disability Insurance',
+                'Homeowner Insurance',
+                'Automobile Insurance',
+                'Other Liability Insurance',
+            ],
             years: ['1 year', '2 years', '3 years', '4 years', '5 years', '6 years', '7 years', '8 years', '9 years', '10 years'],
             claimDialog: false,
             tabs: null,
@@ -988,7 +995,7 @@ export default {
     },
     methods: {
         getClaimStatus(status) {
-           
+
             if (status === 0) return 'orange'
             else if (status === 1) return 'green'
             else if (status === 2) return 'red'

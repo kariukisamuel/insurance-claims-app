@@ -15,7 +15,7 @@
 
             </div> -->
             <div class="text-center pl-4">
-                <NuxtLink to="/agency/forfeit-commision-claims">
+                <NuxtLink to="/agencies/commision-claim">
                     <v-icon aria-label="check all" role="img" aria-hidden="false" color="#fff" size="32"> {{
                             icons.mdiCashFast
                     }}
