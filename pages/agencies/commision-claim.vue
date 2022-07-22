@@ -988,7 +988,7 @@ export default {
     },
     methods: {
         getClaimStatus(status) {
-            console.log(status)
+           
             if (status === 0) return 'orange'
             else if (status === 1) return 'green'
             else if (status === 2) return 'red'
