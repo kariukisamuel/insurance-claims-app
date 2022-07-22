@@ -600,7 +600,7 @@
 
 
 </template>
-<script>
+<script scoped>
 import { mdiDotsVertical, mdiMicrosoftExcel, mdiPlusBoxMultipleOutline } from "@mdi/js";
 export default {
     name: 'ClaimsPage',

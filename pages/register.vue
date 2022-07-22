@@ -128,7 +128,7 @@
   </v-row>
 
 </template>
-<style>
+<style scoped>
 .full-height-background {
   width: 100vw;
   height: 100vh;
