@@ -15,6 +15,15 @@
 
             </div> -->
             <div class="text-center">
+                <NuxtLink to="/cca/claims">
+                    <v-icon aria-label="check all" role="img" aria-hidden="false" color="#fff" size="32"> {{
+                            icons.mdiCashFast
+                    }}
+                    </v-icon>
+                    <span class="color-white pa-5">Commision Claims</span>
+                </NuxtLink>
+            </div>
+            <div class="text-center">
                 <NuxtLink to="/cca/users">
                     <v-icon aria-label="check all" role="img" aria-hidden="false" color="#fff" size="32"> {{
                             icons.mdiAccountSupervisorCircle
@@ -32,15 +41,7 @@
                     <span class="color-white pa-5">Utilities</span>
                 </NuxtLink>
             </div>
-            <div class="text-center">
-                <NuxtLink to="/cca/claims">
-                    <v-icon aria-label="check all" role="img" aria-hidden="false" color="#fff" size="32"> {{
-                            icons.mdiCashFast
-                    }}
-                    </v-icon>
-                    <span class="color-white pa-5">Commision Claims</span>
-                </NuxtLink>
-            </div>
+
         </div>
 
 

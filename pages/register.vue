@@ -120,6 +120,11 @@
               <p>We
                 look forward to our partnership.</p>
 
+              <nuxt-link to="/login?user=agents-dash">
+                <v-btn color="primary">Login</v-btn>
+              </nuxt-link>
+
+
             </v-stepper-content>
           </v-stepper-items>
         </v-stepper>

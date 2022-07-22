@@ -8,7 +8,7 @@
                 <h2 class="text-center py-3">Commission Claims App</h2>
                 <div class="d-flex justify-between">
                     <div class="pa-2">
-                        <nuxt-link to="/login?user=agency" class="text-decoration-none">
+                        <nuxt-link to="/register" class="text-decoration-none">
                             <v-card class="mx-auto pa-5" tile>
                                 <div class="d-flex justify-center">
                                     <img src="/broker.png" width="100px" />

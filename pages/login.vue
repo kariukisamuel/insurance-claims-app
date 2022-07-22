@@ -15,21 +15,28 @@
         <p>Did you <a href="" class="color-blue text-decoration-none">forget your password?</a></p>
 
         <div v-if="this.$route.query.user === 'agency'">
-          <nuxt-link to="/agencies/commision-claim">
+          <nuxt-link to="/register">
             <v-btn rounded color="primary" block class="mt-5">
               Login
             </v-btn>
           </nuxt-link>
         </div>
-        <div v-if="this.$route.query.user === 'insurance'">
+        <div v-else-if="this.$route.query.user === 'insurance'">
           <nuxt-link to="/insurance/commision-claims">
             <v-btn rounded color="primary" block class="mt-5">
               Login
             </v-btn>
           </nuxt-link>
         </div>
-        <div v-if="this.$route.query.user === 'payer'">
-          <nuxt-link to="/cca/users">
+        <div v-else-if="this.$route.query.user === 'payer'">
+          <nuxt-link to="/cca/claims">
+            <v-btn rounded color="primary" block class="mt-5">
+              Login
+            </v-btn>
+          </nuxt-link>
+        </div>
+        <div v-else-if="this.$route.query.user === 'agents-dash'">
+          <nuxt-link to="/agencies/commision-claim">
             <v-btn rounded color="primary" block class="mt-5">
               Login
             </v-btn>
