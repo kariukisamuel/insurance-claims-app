@@ -680,9 +680,6 @@
 import { mdiDotsVertical, mdiMicrosoftExcel, mdiPlusBoxMultipleOutline } from "@mdi/js";
 export default {
     name: 'ClaimsPage',
-    components: {
-        pdf
-    },
     data() {
         return {
             date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
