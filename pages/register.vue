@@ -46,7 +46,7 @@
                 </v-radio>
                 <v-radio value="Insurance Rep Name">
                   <template v-slot:label>
-                    <div><strong class="font-weight-bold h6">Insurance Rep Name</strong></div>
+                    <div><strong class="font-weight-bold h6">Insurance Sales Representative</strong></div>
                   </template>
                 </v-radio>
               </v-radio-group>

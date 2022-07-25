@@ -1,7 +1,9 @@
 <template>
     <v-card elevation="4" color="#3750EB" class="d-flex justify-space-between pa-5 align-center">
         <div>
-            <img src="~/static/logoipsum-logo-38.svg" />
+            <nuxt-link to="/">
+                <img src="~/static/logoipsum-logo-38.svg" />
+            </nuxt-link>
         </div>
         <div class="d-flex">
             <!-- <div class="text-center">
@@ -22,8 +24,16 @@
                     </v-icon>
                     <span class="color-white pa-5">Commision Forfeiture Claims</span>
                 </NuxtLink>
-            </div>
 
+
+            </div>
+            <div>
+                <nuxt-link to="/" class="text-decoration-none">
+                    <v-btn color="error">
+                        Logout
+                    </v-btn>
+                </nuxt-link>
+            </div>
         </div>
     </v-card>
 </template>
