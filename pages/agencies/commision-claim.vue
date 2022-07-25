@@ -175,6 +175,30 @@
                         <v-tab-item value="tab-1">
                             <v-card flat>
                                 <v-card-title class="d-flex justify-end">
+                                    <template>
+                                        <v-row>
+                                            <v-col cols="12" sm="6" md="4">
+                                                <v-menu ref="menu1" v-model="menu1" :close-on-content-click="false"
+                                                    :return-value.sync="date" transition="scale-transition" offset-y
+                                                    min-width="auto">
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-text-field v-model="date" label="Choose Date Range"
+                                                            prepend-icon="mdi-calendar" readonly v-bind="attrs"
+                                                            v-on="on"></v-text-field>
+                                                    </template>
+                                                    <v-date-picker v-model="date" no-title scrollable>
+                                                        <v-spacer></v-spacer>
+                                                        <v-btn text color="primary" @click="menu = false">
+                                                            Cancel
+                                                        </v-btn>
+                                                        <v-btn text color="primary" @click="$refs.menu.save(date)">
+                                                            OK
+                                                        </v-btn>
+                                                    </v-date-picker>
+                                                </v-menu>
+                                            </v-col>
+                                        </v-row>
+                                    </template>
                                     <v-btn color="primary" dark v-bind="attrs" v-on="on">
                                         <v-icon left>
                                             {{ icons.mdiMicrosoftExcel }}
@@ -225,6 +249,30 @@
 
                             <v-card flat>
                                 <v-card-title class="d-flex justify-end">
+                                    <template>
+                                        <v-row>
+                                            <v-col cols="12" sm="6" md="4">
+                                                <v-menu ref="menu1" v-model="menu2" :close-on-content-click="false"
+                                                    :return-value.sync="date" transition="scale-transition" offset-y
+                                                    min-width="auto">
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-text-field v-model="date" label="Choose Date Range"
+                                                            prepend-icon="mdi-calendar" readonly v-bind="attrs"
+                                                            v-on="on"></v-text-field>
+                                                    </template>
+                                                    <v-date-picker v-model="date" no-title scrollable>
+                                                        <v-spacer></v-spacer>
+                                                        <v-btn text color="primary" @click="menu = false">
+                                                            Cancel
+                                                        </v-btn>
+                                                        <v-btn text color="primary" @click="$refs.menu.save(date)">
+                                                            OK
+                                                        </v-btn>
+                                                    </v-date-picker>
+                                                </v-menu>
+                                            </v-col>
+                                        </v-row>
+                                    </template>
                                     <v-btn color="primary" dark v-bind="attrs" v-on="on">
                                         <v-icon left>
                                             {{ icons.mdiMicrosoftExcel }}
@@ -275,6 +323,30 @@
 
                             <v-card flat>
                                 <v-card-title class="d-flex justify-end">
+                                    <template>
+                                        <v-row>
+                                            <v-col cols="12" sm="6" md="4">
+                                                <v-menu ref="menu1" v-model="menu3" :close-on-content-click="false"
+                                                    :return-value.sync="date" transition="scale-transition" offset-y
+                                                    min-width="auto">
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-text-field v-model="date" label="Choose Date Range"
+                                                            prepend-icon="mdi-calendar" readonly v-bind="attrs"
+                                                            v-on="on"></v-text-field>
+                                                    </template>
+                                                    <v-date-picker v-model="date" no-title scrollable>
+                                                        <v-spacer></v-spacer>
+                                                        <v-btn text color="primary" @click="menu = false">
+                                                            Cancel
+                                                        </v-btn>
+                                                        <v-btn text color="primary" @click="$refs.menu.save(date)">
+                                                            OK
+                                                        </v-btn>
+                                                    </v-date-picker>
+                                                </v-menu>
+                                            </v-col>
+                                        </v-row>
+                                    </template>
                                     <v-btn color="primary" dark v-bind="attrs" v-on="on">
                                         <v-icon left>
                                             {{ icons.mdiMicrosoftExcel }}
@@ -325,6 +397,30 @@
 
                             <v-card flat>
                                 <v-card-title class="d-flex justify-end">
+                                    <template>
+                                        <v-row>
+                                            <v-col cols="12" sm="6" md="4">
+                                                <v-menu ref="menu1" v-model="menu4" :close-on-content-click="false"
+                                                    :return-value.sync="date" transition="scale-transition" offset-y
+                                                    min-width="auto">
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-text-field v-model="date" label="Choose Date Range"
+                                                            prepend-icon="mdi-calendar" readonly v-bind="attrs"
+                                                            v-on="on"></v-text-field>
+                                                    </template>
+                                                    <v-date-picker v-model="date" no-title scrollable>
+                                                        <v-spacer></v-spacer>
+                                                        <v-btn text color="primary" @click="menu = false">
+                                                            Cancel
+                                                        </v-btn>
+                                                        <v-btn text color="primary" @click="$refs.menu.save(date)">
+                                                            OK
+                                                        </v-btn>
+                                                    </v-date-picker>
+                                                </v-menu>
+                                            </v-col>
+                                        </v-row>
+                                    </template>
                                     <v-btn color="primary" dark v-bind="attrs" v-on="on">
                                         <v-icon left>
                                             {{ icons.mdiMicrosoftExcel }}
@@ -375,6 +471,30 @@
 
                             <v-card flat>
                                 <v-card-title class="d-flex justify-end">
+                                    <template>
+                                        <v-row>
+                                            <v-col cols="12" sm="6" md="4">
+                                                <v-menu ref="menu1" v-model="menu5" :close-on-content-click="false"
+                                                    :return-value.sync="date" transition="scale-transition" offset-y
+                                                    min-width="auto">
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-text-field v-model="date" label="Choose Date Range"
+                                                            prepend-icon="mdi-calendar" readonly v-bind="attrs"
+                                                            v-on="on"></v-text-field>
+                                                    </template>
+                                                    <v-date-picker v-model="date" no-title scrollable>
+                                                        <v-spacer></v-spacer>
+                                                        <v-btn text color="primary" @click="menu = false">
+                                                            Cancel
+                                                        </v-btn>
+                                                        <v-btn text color="primary" @click="$refs.menu.save(date)">
+                                                            OK
+                                                        </v-btn>
+                                                    </v-date-picker>
+                                                </v-menu>
+                                            </v-col>
+                                        </v-row>
+                                    </template>
                                     <v-btn color="primary" dark v-bind="attrs" v-on="on">
                                         <v-icon left>
                                             {{ icons.mdiMicrosoftExcel }}
@@ -470,124 +590,80 @@
                         <v-card-text>
                             <v-container>
                                 <v-row class="py-4">
-                                    <v-col cols="12">
-                                        <v-expansion-panels>
-                                            <v-expansion-panel key="1">
-                                                <v-expansion-panel-header>
-                                                    Type Of Policy
-                                                </v-expansion-panel-header>
-                                                <v-expansion-panel-content>
-                                                    {{ editedClaims.typeOfPolicy }}
-                                                </v-expansion-panel-content>
-                                            </v-expansion-panel>
-                                            <v-expansion-panel key="2">
-                                                <v-expansion-panel-header>
-                                                    Insurance Company
-                                                </v-expansion-panel-header>
-                                                <v-expansion-panel-content>
-                                                    {{ editedClaims.insurance }}
-                                                </v-expansion-panel-content>
-                                            </v-expansion-panel>
-                                            <v-expansion-panel key="3">
-                                                <v-expansion-panel-header>
-                                                    Policy No
-                                                </v-expansion-panel-header>
-                                                <v-expansion-panel-content>
-                                                    {{ editedClaims.policyNo }}
-                                                </v-expansion-panel-content>
-                                            </v-expansion-panel>
-                                            <v-expansion-panel key="7">
-                                                <v-expansion-panel-header>
-                                                    Policy Uploads
-                                                </v-expansion-panel-header>
-                                                <v-expansion-panel-content>
-                                                    <img src="https://via.placeholder.com/500" />
-                                                </v-expansion-panel-content>
-                                            </v-expansion-panel>
-                                            <v-expansion-panel key="3">
-                                                <v-expansion-panel-header>
-                                                    Policy Period
-                                                </v-expansion-panel-header>
-                                                <v-expansion-panel-content>
-                                                    {{ editedClaims.policyPeriod }}
-                                                </v-expansion-panel-content>
-                                            </v-expansion-panel>
-                                            <v-expansion-panel key="4">
-                                                <v-expansion-panel-header>
-                                                    Premiums
-                                                </v-expansion-panel-header>
-                                                <v-expansion-panel-content>
-                                                    {{ editedClaims.premiums }}
-                                                </v-expansion-panel-content>
-                                            </v-expansion-panel>
-                                            <v-expansion-panel key="5">
-                                                <v-expansion-panel-header>
-                                                    Commision
-                                                </v-expansion-panel-header>
-                                                <v-expansion-panel-content>
-                                                    {{ editedClaims.commision }}
-                                                </v-expansion-panel-content>
-                                            </v-expansion-panel>
-                                            <v-expansion-panel key="5">
-                                                <v-expansion-panel-header>
-                                                    Invoice No
-                                                </v-expansion-panel-header>
-                                                <v-expansion-panel-content>
-                                                    {{ editedClaims.invoiceNo }}
-                                                </v-expansion-panel-content>
-                                            </v-expansion-panel>
-                                            <v-expansion-panel key="5">
-                                                <v-expansion-panel-header>
-                                                    Status
-                                                </v-expansion-panel-header>
-                                                <v-expansion-panel-content>
+                                    <v-col cols="12" class="d-flex pa-0">
+                                        <table>
+                                            <tr>
+                                                <td class="px-5">Type Of Policy :</td>
+                                                <td class="px-5">{{ editedClaims.typeOfPolicy }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-5">Insurance Company :</td>
+                                                <td class="px-5">{{ editedClaims.insurance }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-5">Policy No :</td>
+                                                <td class="px-5">{{ editedClaims.policyNo }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-5">Policy Copy :</td>
+                                                <td class="px-5">
+                                                    <a href="/policy.pdf" download="" target="_blank">Policy
+                                                        Copy PDF</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-5">Invoice No :</td>
+                                                <td class="px-5">{{ editedClaims.invoiceNo }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-5">Policy Copy :</td>
+                                                <td class="px-5">
+                                                    <a href="/invoices.pdf" download="" target="_blank">Invoice Copy
+                                                        PDF</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-5">Policy Period:</td>
+                                                <td class="px-5">{{ editedClaims.policyPeriod }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-5">Premium :</td>
+                                                <td class="px-5">{{ editedClaims.premiums }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="px-5">Commission Value :</td>
+                                                <td class="px-5">{{ editedClaims.commision }}</td>
+                                            </tr>
 
+                                            <tr>
+                                                <td class="px-5">Commission Payment Status :</td>
+                                                <td class="px-5 text--orange" v-if="editedClaims.status === 0">
+                                                    <p class="text--orange ma-0">Pending Insurance Approval</p>
+                                                </td>
+                                                <td class="px-5 text--green" v-else-if="editedClaims.status === 1">
+                                                    Approved By Insurance
+                                                </td>
+                                                <td class="px-5 text--red" v-else-if="editedClaims.status === 2">
+                                                    Rejected By Insurance
+                                                </td>
+                                                <td class="px-5 text--blue" v-else-if="editedClaims.status === 3">
+                                                    Approved For Payment
+                                                </td>
+                                                <td class="px-5 text--black" v-else-if="editedClaims.status === 4">
+                                                    Payment Rejected
+                                                </td>
+                                                <td class="px-5 text--black" v-else-if="editedClaims.status === 5">
+                                                    Paid Out
+                                                </td>
+                                            </tr>
 
-                                                    <v-chip :color="getClaimStatus(editedClaims.status)" dark
-                                                        v-if="editedClaims.status === 0">
-                                                        Pending Insurance Approval
-                                                    </v-chip>
-                                                    <v-chip :color="getClaimStatus(editedClaims.status)" dark
-                                                        v-else-if="editedClaims.status === 1">
-                                                        Approved By Insurance
-                                                    </v-chip>
-                                                    <v-chip :color="getClaimStatus(editedClaims.status)" dark
-                                                        v-else-if="editedClaims.status === 2">
-                                                        Rejected By Insurance
-                                                    </v-chip>
-                                                    <v-chip :color="getClaimStatus(editedClaims.status)" dark
-                                                        v-else-if="editedClaims.status === 3">
-                                                        Approved For Payment
-                                                    </v-chip>
-                                                    <v-chip :color="getClaimStatus(editedClaims.status)" dark
-                                                        v-else-if="editedClaims.status === 4">
-                                                        Payment Rejected
-                                                    </v-chip>
-
-
-
-                                                </v-expansion-panel-content>
-                                            </v-expansion-panel>
-
-
-                                            <v-expansion-panel key="6">
-                                                <v-expansion-panel-header>
-                                                    Invoice Uploads
-                                                </v-expansion-panel-header>
-                                                <v-expansion-panel-content>
-                                                    <img src="https://via.placeholder.com/500" />
-                                                </v-expansion-panel-content>
-                                            </v-expansion-panel>
-                                        </v-expansion-panels>
+                                        </table>
                                     </v-col>
-
 
                                 </v-row>
 
                             </v-container>
                         </v-card-text>
-
-
                     </v-card>
 
                 </v-dialog>
@@ -602,10 +678,22 @@
 </template>
 <script scoped>
 import { mdiDotsVertical, mdiMicrosoftExcel, mdiPlusBoxMultipleOutline } from "@mdi/js";
+import pdf from 'vue-pdf'
 export default {
     name: 'ClaimsPage',
+    components: {
+        pdf
+    },
     data() {
         return {
+            date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
+            menu1: false,
+            menu2: false,
+            menu3: false,
+            menu4: false,
+            menu5: false,
+            menu6: false,
+            modal: false,
             e1: 1,
             insuranceCompanies: ['AAR Insurance Kenya Limited',
                 'Africa Merchant Assurance Company Limited',
