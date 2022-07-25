@@ -6,32 +6,44 @@
                     <ccamenu />
                 </v-col>
             </v-row>
+
             <v-row no-gutters class="pa-10">
-                <v-col cols="12">
-                    <v-card class="my-5 pa-4 d-flex justify-end">
+
+                <v-col cols="12" class="d-flex justify-end">
+                    <v-chip class="ma-2" :color="insuranceTabs ? 'primary' : 'white'" pill @click="toggleTabs(1)">
+                        Insurance Agents/ Brokerage /Firms Users
+                        <v-icon right>
+                            mdi-account-outline
+                        </v-icon>
+                    </v-chip>
+                    <v-chip class="ma-2" :color="adminTabs ? 'primary' : 'white'" pill @click="toggleTabs(2)">
+                        Admin User Accounts
+                        <v-icon right>
+                            mdi-account-outline
+                        </v-icon>
+                    </v-chip>
+                </v-col>
+
+                <v-col cols="12" v-if="insuranceTabs">
+                    <v-card class="my-5 pa-4 d-flex justify-end ">
                         <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
                             <template v-slot:activator="{ on, attrs }">
-                                <v-btn color="primary" v-bind="attrs" v-on="on">
+                                <v-btn color="primary" v-bind="attrs" v-on="on" class="pa-5">
                                     <v-icon left>
                                         {{ icons.mdiAccountMultiplePlus }}
                                     </v-icon>
-                                    Add Users
+                                    Add Insurance Agents/ Brokerage /Firms
                                 </v-btn>
                             </template>
                             <v-card>
                                 <v-toolbar dark color="primary">
-                                    <v-btn icon dark @click="dialog = false">
+                                    <v-btn icon dark @click="closeDialog1">
                                         <v-icon>mdi-close</v-icon>
                                     </v-btn>
-                                    <v-toolbar-title>Add User</v-toolbar-title>
+                                    <v-toolbar-title>Add Insurance Agents/ Brokerage /Firms Users</v-toolbar-title>
                                 </v-toolbar>
                                 <v-card class="half-height-background bg-teal pa-10 rounded-lg">
                                     <h1 class="text-center color-blue">Register</h1>
-                                    <!-- <p class="text-center py-3">Are you an insurance brokerage firm or an insurance agent?
-          Are you tired of waiting for your insurance commision to get paid? You are the in the right place. By
-          using our platform you dont have to wait for 45-60 days to get paid.Get paid faster, what are you waiting for
-          register now?
-        </p> -->
                                     <v-stepper v-model="e1">
                                         <v-stepper-header>
                                             <v-stepper-step :complete="e1 > 1" step="1">
@@ -70,9 +82,9 @@
                                                                     Agent</strong></div>
                                                         </template>
                                                     </v-radio>
-                                                    <v-radio value="Insurance Rep Name">
+                                                    <v-radio value="Insurance Firm">
                                                         <template v-slot:label>
-                                                            <div><strong class="font-weight-bold h6">Insurance Rep
+                                                            <div><strong class="font-weight-bold h6">Insurance Firm
                                                                     Name</strong></div>
                                                         </template>
                                                     </v-radio>
@@ -155,7 +167,6 @@
                                 </v-card>
 
                             </v-card>
-
                         </v-dialog>
                         <v-dialog v-model="dialogEdit" hide-overlay transition="dialog-bottom-transition" width="700">
 
@@ -210,7 +221,7 @@
                                         </v-row>
                                         <v-row>
                                             <v-col cols="4" v-if="editedItem.status === 0">
-                                                <v-btn tile color="primary" >
+                                                <v-btn tile color="primary">
                                                     <v-icon left>
                                                         {{ icons.mdiAccountCheck }}
                                                     </v-icon>
@@ -241,8 +252,6 @@
                             </v-card>
 
                         </v-dialog>
-
-
                     </v-card>
                     <v-card>
                         <v-tabs fixed-tabs background-color="#3750EB" dark v-model="tabs">
@@ -363,6 +372,68 @@
                         </v-tabs-items>
                     </v-card>
                 </v-col>
+                <v-col cols="12" v-else>
+                    <v-card class="my-5 pa-4 d-flex justify-end ">
+                        <v-dialog v-model="dialog2" hide-overlay transition="dialog-bottom-transition" width="700">
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-btn color="primary" v-bind="attrs" v-on="on" class="pa-5">
+                                    <v-icon left>
+                                        {{ icons.mdiAccountMultiplePlus }}
+                                    </v-icon>
+                                    Add Admin Users
+                                </v-btn>
+                            </template>
+                            <v-card>
+                                <v-toolbar dark color="primary">
+                                    <v-btn icon dark @click="dialog2 = false">
+                                        <v-icon>mdi-close</v-icon>
+                                    </v-btn>
+                                    <v-toolbar-title>Add Admin User</v-toolbar-title>
+                                </v-toolbar>
+                                <v-card-text>
+                                    <v-container>
+                                        <v-row>
+                                            <v-col cols="12">
+                                                <v-text-field v-model="admin.name" label="User Name" filled>
+                                                </v-text-field>
+
+                                            </v-col>
+                                            <v-col cols="12">
+                                                <v-text-field v-model="admin.email" label="User Email" filled>
+                                                </v-text-field>
+                                            </v-col>
+
+                                            <v-col cols="12">
+                                                <v-select :items="admin.roles" filled label="Role"></v-select>
+                                            </v-col>
+
+
+                                            <v-btn color="primary" rounded block>
+                                                Save
+                                            </v-btn>
+                                        </v-row>
+                                    </v-container>
+                                </v-card-text>
+
+                            </v-card>
+
+                        </v-dialog>
+
+
+                    </v-card>
+                    <v-card>
+                        <v-data-table :headers="admin.headers" :items="admin.users" :search="search"
+                            :items-per-page="10" class="elevation-1">
+                            <template v-slot:item.actions="{ item }">
+                                <v-icon small class="mr-2" @click="editItem(item)">
+                                    {{ icons.mdiDotsVertical }}
+                                </v-icon>
+
+                            </template>
+
+                        </v-data-table>
+                    </v-card>
+                </v-col>
             </v-row>
         </v-container>
     </div>
@@ -387,6 +458,8 @@ export default {
             e1: 1,
             search: '',
             email: "",
+            adminTabs: false,
+            insuranceTabs: true,
             show1: false,
             checkbox: false,
             password: '',
@@ -396,7 +469,36 @@ export default {
                 min: v => v.length >= 8 || 'Min 8 characters',
                 emailMatch: () => (`The email and password you entered don't match`),
             },
+            admin: {
+                email: '',
+                name: '',
+                roles: ["Approver", "Payer"],
+                headers: [
+                    {
+                        text: 'Name',
+                        align: 'start',
+                        sortable: false,
+                        value: 'name',
+                    },
+                    { text: 'Email', value: 'email' },
+                    { text: 'Role', value: 'role' },
+                    { text: 'Actions', value: 'actions' },
+                ],
+                users: [
+                    {
+                        name: 'Samuel Kariuki',
+                        email: "inboxsamuel@outlook.com",
+                        role: 'Approver',
+                    },
+                    {
+                        name: 'Felix Fleet',
+                        email: "inboxsamuel@outlook.com",
+                        role: 'Payer',
+                    },
+                ]
+            },
             dialog: false,
+            dialog2: false,
             notifications: false,
             sound: true,
             widgets: false,
@@ -414,6 +516,7 @@ export default {
                 { text: 'Location', value: 'location' },
                 { text: 'IRA No', value: 'iraNo' },
                 { text: 'Business Registration No', value: 'regNo' },
+                { text: 'Role', value: 'role' },
                 { text: 'Status', value: 'status' },
                 { text: 'Actions', value: 'actions' },
             ],
@@ -425,6 +528,7 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
+                    role: 'Insurance Agency',
                     status: 0
                 },
                 {
@@ -434,259 +538,8 @@ export default {
                     location: "Mombasa Road",
                     iraNo: "01565454",
                     regNo: '01565454',
+                    role: 'Insurance Firm',
                     status: 1
-                },
-                {
-                    name: 'ICEA Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 2
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 0
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 1
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 2
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 0
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 1
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 2
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 0
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 1
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 2
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 0
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 1
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 2
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 0
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 1
-                },
-                {
-                    name: 'ICEA Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 2
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 0
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 1
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 2
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 0
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 1
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 2
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 0
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 1
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 2
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 0
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 1
-                },
-                {
-                    name: 'Mwangaza Roshanee Agency',
-                    phoneNumber: "0708091524",
-                    email: "inboxsamuel@outlook.com",
-                    location: "Mombasa Road",
-                    iraNo: "01565454",
-                    regNo: '01565454',
-                    status: 2
                 },
 
 
@@ -704,15 +557,30 @@ export default {
             }
         }
     },
-    computed:{
-        approvedUser(){
-           return this.users.filter(user => user.status === 1)
+    computed: {
+        approvedUser() {
+            return this.users.filter(user => user.status === 1)
         },
-        disapprovedUser(){
-           return this.users.filter(user => user.status === 0)
+        disapprovedUser() {
+            return this.users.filter(user => user.status === 0)
         }
     },
     methods: {
+        toggleTabs(tab) {
+            console.log(tab)
+            if (tab == 1) {
+                this.adminTabs = false;
+                this.insuranceTabs = true;
+            } else {
+                this.insuranceTabs = false;
+                this.adminTabs = true;
+
+            }
+        },
+        closeDialog1() {
+            this.e1 = 1;
+            this.dialog = false
+        },
         getUserStatus(status) {
             if (status === 0) return 'red'
             else return 'green'
