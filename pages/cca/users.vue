@@ -472,7 +472,7 @@ export default {
             admin: {
                 email: '',
                 name: '',
-                roles: ["Approver", "Payer"],
+                roles: ["Approver", "Payer", "Super Admin"],
                 headers: [
                     {
                         text: 'Name',
@@ -494,6 +494,11 @@ export default {
                         name: 'Felix Fleet',
                         email: "inboxsamuel@outlook.com",
                         role: 'Payer',
+                    },
+                    {
+                        name: 'Samuel Fleet',
+                        email: "inboxsamuel@outlook.com",
+                        role: 'Super Admin',
                     },
                 ]
             },
