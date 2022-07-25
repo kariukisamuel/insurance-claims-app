@@ -678,7 +678,6 @@
 </template>
 <script scoped>
 import { mdiDotsVertical, mdiMicrosoftExcel, mdiPlusBoxMultipleOutline } from "@mdi/js";
-import pdf from 'vue-pdf'
 export default {
     name: 'ClaimsPage',
     components: {
