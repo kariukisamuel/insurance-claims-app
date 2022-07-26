@@ -6,204 +6,216 @@
                     <ccamenu />
                 </v-col>
             </v-row>
-            <v-row no-gutters class="pa-10">
+
+            <v-row class="elevation-4 white pa-5 ma-5 rounded-lg">
+                <v-col>
+                    <v-btn color="primary" v-bind="attrs" v-on="on" class="pa-10 my-3" block
+                        @click.stop="dialogInsurance = true">
+                        <v-icon left size="43">
+                            {{ icons.mdiOfficeBuilding }}
+                        </v-icon>
+                        <span class="text-wrap py-3" style="width: min-content; height:auto"> Add Insurance Firms</span>
+
+                    </v-btn>
+                </v-col>
+                <v-col>
+                    <v-btn color="primary" v-bind="attrs" v-on="on" class="pa-10 my-3" block
+                        @click.stop="dialogInsuranceType = true">
+                        <v-icon left size="43">
+                            {{ icons.mdiFormatListBulletedType }}
+                        </v-icon>
+                        <span class="text-wrap py-3" style="width: min-content; height:auto">Add Insurance
+                            Types</span>
+                    </v-btn>
+                </v-col>
+                <v-col>
+                    <v-btn color="primary" v-bind="attrs" v-on="on" class="pa-10 my-3" block
+                        @click.stop="dialogBank = true">
+                        <v-icon left size="43">
+                            {{ icons.mdiOfficeBuilding }}
+                        </v-icon>
+                        <span class="text-wrap py-3" style="width: min-content; height:auto"> Add
+                            Banks</span>
+                    </v-btn>
+                </v-col>
+
+            </v-row>
+            <v-row no-gutters class="pa-5">
+
+
                 <v-col cols="12">
-                    <v-card class="my-5 pa-4 d-flex flex-wrap justify-space-between">
-                        <v-dialog v-model="dialogInsurance" hide-overlay transition="dialog-bottom-transition"
-                            width="700">
-                            <template v-slot:activator="{ on, attrs }">
-                                <v-btn color="primary" v-bind="attrs" v-on="on" class="pa-10 my-3">
-                                    <v-icon left size="43">
-                                        {{ icons.mdiOfficeBuilding }}
-                                    </v-icon>
-                                      <span class="text-wrap py-3" style="width: min-content; height:auto">  Add Insurance Firms</span>
-                                  
+
+                    <v-dialog v-model="dialogInsurance" hide-overlay transition="dialog-bottom-transition" width="700">
+
+                        <v-card>
+                            <v-toolbar dark color="primary">
+                                <v-btn icon dark @click="dialogInsurance = false" class="pa-10 my-3">
+                                    <v-icon>mdi-close</v-icon>
                                 </v-btn>
-                            </template>
-                            <v-card>
-                                <v-toolbar dark color="primary">
-                                    <v-btn icon dark @click="dialogInsurance = false" class="pa-10 my-3">
-                                        <v-icon>mdi-close</v-icon>
-                                    </v-btn>
-                                    <v-toolbar-title>Add Insurance Firms</v-toolbar-title>
-                                </v-toolbar>
-                                <v-card-text>
-                                    <v-container>
-                                        <v-row>
-                                            <v-col cols="12">
-                                                <v-text-field v-model="insurance.name" label="Insurance Firm Name"
-                                                    filled></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12">
-                                                <v-text-field v-model="insurance.address" label="Insurance Address"
-                                                    filled></v-text-field>
-                                            </v-col>
-                                            <v-col cols="12">
-                                                <v-text-field v-model="insurance.phoneNumber"
-                                                    label="Insurance Contact Phone Number" filled></v-text-field>
-                                            </v-col>
-                                            <v-btn color="primary" rounded block>
-                                                Save
-                                            </v-btn>
-                                        </v-row>
-                                    </v-container>
-                                </v-card-text>
+                                <v-toolbar-title>Add Insurance Firms</v-toolbar-title>
+                            </v-toolbar>
+                            <v-card-text>
+                                <v-container>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <v-text-field v-model="insurance.name" label="Insurance Firm Name" filled>
+                                            </v-text-field>
+                                        </v-col>
+                                        <v-col cols="12">
+                                            <v-text-field v-model="insurance.address" label="Insurance Address" filled>
+                                            </v-text-field>
+                                        </v-col>
+                                        <v-col cols="12">
+                                            <v-text-field v-model="insurance.phoneNumber"
+                                                label="Insurance Contact Phone Number" filled></v-text-field>
+                                        </v-col>
+                                        <v-btn color="primary" rounded block>
+                                            Save
+                                        </v-btn>
+                                    </v-row>
+                                </v-container>
+                            </v-card-text>
 
 
-                            </v-card>
+                        </v-card>
 
-                        </v-dialog>
+                    </v-dialog>
 
-                        <v-dialog v-model="dialogInsuranceType" hide-overlay transition="dialog-bottom-transition"
-                            width="700">
-                            <template v-slot:activator="{ on, attrs }">
-                                <v-btn color="primary" v-bind="attrs" v-on="on" class="pa-10 my-3">
-                                    <v-icon left size="43">
-                                        {{ icons.mdiFormatListBulletedType }}
-                                    </v-icon>
-                                   <span class="text-wrap py-3" style="width: min-content; height:auto">Add Insurance Types</span> 
+                    <v-dialog v-model="dialogInsuranceType" hide-overlay transition="dialog-bottom-transition"
+                        width="700">
+
+                        <v-card>
+                            <v-toolbar dark color="primary">
+                                <v-btn icon dark @click="dialogInsuranceType = false">
+                                    <v-icon>mdi-close</v-icon>
                                 </v-btn>
-                            </template>
-                            <v-card>
-                                <v-toolbar dark color="primary">
-                                    <v-btn icon dark @click="dialogInsuranceType = false">
-                                        <v-icon>mdi-close</v-icon>
-                                    </v-btn>
-                                    <v-toolbar-title>Add Insurance Types</v-toolbar-title>
-                                </v-toolbar>
-                                <v-card-text>
+                                <v-toolbar-title>Add Insurance Types</v-toolbar-title>
+                            </v-toolbar>
+                            <v-card-text>
 
-                                    <v-container>
-                                        <v-row>
-                                            <v-col cols="12">
-                                                <v-select :items="insuranceFirms" filled label="Select Insurance Firm">
-                                                </v-select>
-                                            </v-col>
-                                            <v-col cols="12">
-                                                <v-text-field v-model="insurance.type" label="Type Of Insurance" filled>
-                                                </v-text-field>
-                                            </v-col>
-                                            <v-btn color="primary" rounded block>
-                                                Save
-                                            </v-btn>
-                                        </v-row>
-                                    </v-container>
-                                </v-card-text>
+                                <v-container>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <v-select :items="insuranceFirms" filled label="Select Insurance Firm">
+                                            </v-select>
+                                        </v-col>
+                                        <v-col cols="12">
+                                            <v-text-field v-model="insurance.type" label="Type Of Insurance" filled>
+                                            </v-text-field>
+                                        </v-col>
+                                        <v-btn color="primary" rounded block>
+                                            Save
+                                        </v-btn>
+                                    </v-row>
+                                </v-container>
+                            </v-card-text>
 
 
-                            </v-card>
+                        </v-card>
 
-                        </v-dialog>
-                        <v-dialog v-model="dialogBank" hide-overlay transition="dialog-bottom-transition" width="700">
-                            <template v-slot:activator="{ on, attrs }">
-                                <v-btn color="primary" v-bind="attrs" v-on="on" class="pa-10 my-3">
-                                    <v-icon left size="43">
-                                        {{ icons.mdiOfficeBuilding }}
-                                    </v-icon>
-                                   <span class="text-wrap py-3" style="width: min-content; height:auto">  Add Banks</span>
+                    </v-dialog>
+                    <v-dialog v-model="dialogBank" hide-overlay transition="dialog-bottom-transition" width="700">
+
+                        <v-card>
+                            <v-toolbar dark color="primary">
+                                <v-btn icon dark @click="dialogBank = false">
+                                    <v-icon>mdi-close</v-icon>
                                 </v-btn>
-                            </template>
-                            <v-card>
-                                <v-toolbar dark color="primary">
-                                    <v-btn icon dark @click="dialogBank = false">
-                                        <v-icon>mdi-close</v-icon>
-                                    </v-btn>
-                                    <v-toolbar-title>Add Banks</v-toolbar-title>
-                                </v-toolbar>
-                                <v-card-text>
-                                    <v-container>
-                                        <v-row>
-                                            <v-col cols="12">
-                                                <v-text-field v-model="banks.name" label="Bank Name" filled>
-                                                </v-text-field>
-                                            </v-col>
-                                            <v-col cols="12">
-                                                <v-text-field v-model="banks.address" label="Bank Address" filled>
-                                                </v-text-field>
-                                            </v-col>
-                                            <v-col cols="12">
-                                                <v-text-field v-model="banks.phoneNumber"
-                                                    label="Bank Contact Phone Number" filled></v-text-field>
-                                            </v-col>
-                                            <v-btn color="primary" rounded block>
-                                                Save
+                                <v-toolbar-title>Add Banks</v-toolbar-title>
+                            </v-toolbar>
+                            <v-card-text>
+                                <v-container>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <v-text-field v-model="banks.name" label="Bank Name" filled>
+                                            </v-text-field>
+                                        </v-col>
+                                        <v-col cols="12">
+                                            <v-text-field v-model="banks.address" label="Bank Address" filled>
+                                            </v-text-field>
+                                        </v-col>
+                                        <v-col cols="12">
+                                            <v-text-field v-model="banks.phoneNumber" label="Bank Contact Phone Number"
+                                                filled></v-text-field>
+                                        </v-col>
+                                        <v-btn color="primary" rounded block>
+                                            Save
+                                        </v-btn>
+                                    </v-row>
+                                </v-container>
+                            </v-card-text>
+
+
+                        </v-card>
+
+                    </v-dialog>
+
+                    <v-dialog v-model="dialogEditFirm" hide-overlay transition="dialog-bottom-transition" width="700">
+
+                        <v-card>
+                            <v-toolbar dark color="primary">
+                                <v-btn icon dark @click="dialog = false">
+                                    <v-icon>mdi-close</v-icon>
+                                </v-btn>
+                                <v-toolbar-title>Insurance Firm Details</v-toolbar-title>
+                            </v-toolbar>
+                            <v-card-text>
+                                <v-container>
+                                    <v-row>
+                                        <v-col cols="12">
+                                            <h2>Name:<span class="font-weight-medium"> {{
+                                                    insuranceFirms.firms[0].name
+                                            }}</span>
+                                            </h2>
+                                        </v-col>
+                                        <v-col cols="12">
+                                            <h2>Phone Number:<span class="font-weight-medium"> {{
+                                                    insuranceFirms.firms[0].phoneNumber
+                                            }}</span>
+                                            </h2>
+                                        </v-col>
+                                        <v-col cols="12">
+                                            <h2>Address:<span class="font-weight-medium"> {{
+                                                    insuranceFirms.firms[0].address
+                                            }}</span>
+                                            </h2>
+                                        </v-col>
+                                        <v-col cols="12">
+                                            <h2>Email:<span class="font-weight-medium"> {{
+                                                    insuranceFirms.firms[0].email
+                                            }}</span>
+                                            </h2>
+                                        </v-col>
+
+
+                                    </v-row>
+                                    <v-row>
+
+                                        <v-col cols="4">
+                                            <v-btn tile color="error">
+                                                <v-icon left>
+                                                    {{ icons.mdiAccountCancel }}
+                                                </v-icon>
+                                                Disapprove Firm
                                             </v-btn>
-                                        </v-row>
-                                    </v-container>
-                                </v-card-text>
+                                        </v-col>
+                                        <v-col cols="4">
+                                            <v-btn tile color="success">
+                                                <v-icon left>
+                                                    {{ icons.mdiPencil }}
+                                                </v-icon>
+                                                Edit User
+                                            </v-btn>
+                                        </v-col>
 
+                                    </v-row>
+                                </v-container>
+                            </v-card-text>
 
-                            </v-card>
+                        </v-card>
 
-                        </v-dialog>
+                    </v-dialog>
 
-                        <v-dialog v-model="dialogEditFirm" hide-overlay transition="dialog-bottom-transition"
-                            width="700">
-
-                            <v-card>
-                                <v-toolbar dark color="primary">
-                                    <v-btn icon dark @click="dialog = false">
-                                        <v-icon>mdi-close</v-icon>
-                                    </v-btn>
-                                    <v-toolbar-title>Insurance Firm Details</v-toolbar-title>
-                                </v-toolbar>
-                                <v-card-text>
-                                    <v-container>
-                                        <v-row>
-                                            <v-col cols="12">
-                                                <h2>Name:<span class="font-weight-medium"> {{
-                                                        insuranceFirms.firms[0].name
-                                                }}</span>
-                                                </h2>
-                                            </v-col>
-                                            <v-col cols="12">
-                                                <h2>Phone Number:<span class="font-weight-medium"> {{
-                                                        insuranceFirms.firms[0].phoneNumber
-                                                }}</span>
-                                                </h2>
-                                            </v-col>
-                                            <v-col cols="12">
-                                                <h2>Address:<span class="font-weight-medium"> {{
-                                                        insuranceFirms.firms[0].address
-                                                }}</span>
-                                                </h2>
-                                            </v-col>
-                                            <v-col cols="12">
-                                                <h2>Email:<span class="font-weight-medium"> {{
-                                                        insuranceFirms.firms[0].email
-                                                }}</span>
-                                                </h2>
-                                            </v-col>
-
-
-                                        </v-row>
-                                        <v-row>
-
-                                            <v-col cols="4">
-                                                <v-btn tile color="error">
-                                                    <v-icon left>
-                                                        {{ icons.mdiAccountCancel }}
-                                                    </v-icon>
-                                                    Disapprove Firm
-                                                </v-btn>
-                                            </v-col>
-                                            <v-col cols="4">
-                                                <v-btn tile color="success">
-                                                    <v-icon left>
-                                                        {{ icons.mdiPencil }}
-                                                    </v-icon>
-                                                    Edit User
-                                                </v-btn>
-                                            </v-col>
-
-                                        </v-row>
-                                    </v-container>
-                                </v-card-text>
-
-                            </v-card>
-
-                        </v-dialog>
-                    </v-card>
 
                     <v-card>
                         <v-tabs fixed-tabs background-color="#3750EB" show-arrows dark v-model="tabs">
@@ -287,8 +299,8 @@
                                             single-line hide-details></v-text-field>
                                     </v-card-title>
                                     <v-card-text>
-                                        <v-data-table :headers="anks.headers" :items="anks.banks"
-                                            :items-per-page="10" class="elevation-1">
+                                        <v-data-table :headers="anks.headers" :items="anks.banks" :items-per-page="10"
+                                            class="elevation-1">
                                             <template v-slot:item.actions="{ item }">
                                                 <v-icon small class="mr-2" @click="editItem(item)">
                                                     {{ icons.mdiDotsVertical }}
@@ -324,7 +336,7 @@ export default {
     name: "CcaUsersPage",
     data() {
         return {
-            search:'',
+            search: '',
             insuranceFirms: ['Jubilee Insurance', 'Icea Insurance', 'Old Mutual', 'Amaco'],
             banks: {
                 name: "",
@@ -351,7 +363,7 @@ export default {
             notifications: false,
             sound: true,
             widgets: false,
-            icons: { mdiAccountMultiplePlus, mdiDotsVertical, mdiAccountCheck, mdiAccountCancel, mdiPencil, mdiOfficeBuilding, mdiFormatListBulletedType,mdiMicrosoftExcel },
+            icons: { mdiAccountMultiplePlus, mdiDotsVertical, mdiAccountCheck, mdiAccountCancel, mdiPencil, mdiOfficeBuilding, mdiFormatListBulletedType, mdiMicrosoftExcel },
             tabs: null,
             insuranceFirms: {
                 headers: [
