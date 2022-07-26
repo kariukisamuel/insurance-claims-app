@@ -148,7 +148,7 @@
 
         <v-row class="my-2 pa-5">
             <v-col class="pa-5">
-                <v-tabs fixed-tabs background-color="#3750EB" show-arrows dark v-model="tabs">
+                <v-tabs fixed-tabs background-color="#3750EB" show-arrows center-active dark v-model="tabs">
                     <v-tab href="#tab-1">Your Submissions</v-tab>
                     <v-tab href="#tab-2">Disapproved By Insurance</v-tab>
                     <v-tab href="#tab-3">Approved By Insurance</v-tab>
