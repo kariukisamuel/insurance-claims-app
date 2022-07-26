@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col cols="12" sm="12" md="12" class="full-height-background bg-blue d-flex justify-center align-center">
-      <v-card class="half-height-background bg-teal pa-10 rounded-lg">
+      <v-card>
         <h1 class="text-center color-blue">Login</h1>
         <p class="text-center py-3">Welcome to the Insurance Commision Claims App.</p>
 
@@ -67,6 +67,12 @@
 
 .bg-teal {
   background-color: rgb(231 240 247);
+}
+@media only screen and (max-width: 600px) {
+  .half-height-background {
+    width: 90vw;
+  }
+
 }
 </style>
 <script>

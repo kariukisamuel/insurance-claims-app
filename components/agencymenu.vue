@@ -5,7 +5,7 @@
                 <img src="~/static/logoipsum-logo-38.svg" />
             </nuxt-link>
         </div>
-        <div class="d-flex">
+        <div class="d-flex d-none-xs d-none-sm">
             <!-- <div class="text-center pl-4">
                 <a href="">
                     <v-icon aria-label="check all" role="img" aria-hidden="false" color="#fff" size="32"> {{
