@@ -8,12 +8,12 @@
         <v-row no-gutters class="pa-10">
             <v-col cols="12">
                 <v-card>
-                    <v-tabs fixed-tabs background-color="#3750EB" dark v-model="tabs">
+                    <v-tabs fixed-tabs background-color="#3750EB" dark show-arrows v-model="tabs">
                         <v-tab href="#tab-1">All</v-tab>
-                        <v-tab href="#tab-3">Disapproved By Insurance Firms</v-tab>
-                        <v-tab href="#tab-2">Approved By Insurance Firms</v-tab>
-                        <v-tab href="#tab-5">Disapproved For Payment</v-tab>
-                        <v-tab href="#tab-4">Approved For Payment</v-tab>
+                        <v-tab href="#tab-3">Disapproved By Insurance</v-tab>
+                        <v-tab href="#tab-2">Approved By Insurance</v-tab>
+                        <v-tab href="#tab-5">Disapproved Payment</v-tab>
+                        <v-tab href="#tab-4">Approved Payment</v-tab>
                         <v-tab href="#tab-6">Paid Out</v-tab>
                     </v-tabs>
                     <v-tabs-items v-model="tabs">
@@ -518,7 +518,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="px-5">Invoice No :</td>
-                                                <td class="px-5">{{ editedClaims.policyNo }}</td>
+                                                <td class="px-5">{{ editedClaims.invoiceNo }}</td>
                                             </tr>
 
                                             <tr>
@@ -630,6 +630,7 @@ export default {
                     { text: 'Policy Number', value: 'policyNo' },
                     { text: 'Policy Value', value: 'policyValue' },
                     { text: 'Commission Value', value: 'commisionValue' },
+                    { text: 'Invoice Number', value: 'invoiceNo' },
                     { text: 'Actions', value: 'actions' },
 
                 ],
@@ -643,7 +644,8 @@ export default {
                         policyType: "Medical Insurance",
                         policyNo: "001",
                         policyValue: "4000000",
-                        commisionValue: "400000"
+                        commisionValue: "400000",
+                        invoiceNo: "002"
                     },
                     {
                         name: 'Mwangaza Roshanee Agency',
@@ -654,7 +656,8 @@ export default {
                         policyType: "Medical Insurance",
                         policyNo: "001",
                         policyValue: "4000000",
-                        commisionValue: "400000"
+                        commisionValue: "400000",
+                        invoiceNo: "002"
                     },
                     {
                         name: 'Mwangaza Roshanee Agency',
@@ -665,7 +668,8 @@ export default {
                         policyType: "Medical Insurance",
                         policyNo: "001",
                         policyValue: "4000000",
-                        commisionValue: "400000"
+                        commisionValue: "400000",
+                        invoiceNo: "002"
                     },
                     {
                         name: 'Mwangaza Roshanee Agency',
@@ -676,7 +680,8 @@ export default {
                         policyType: "Medical Insurance",
                         policyNo: "001",
                         policyValue: "4000000",
-                        commisionValue: "400000"
+                        commisionValue: "400000",
+                        invoiceNo: "002"
                     },
                     {
                         name: 'Mwangaza Roshanee Agency',
@@ -687,7 +692,8 @@ export default {
                         policyType: "Medical Insurance",
                         policyNo: "001",
                         policyValue: "4000000",
-                        commisionValue: "400000"
+                        commisionValue: "400000",
+                        invoiceNo: "002"
                     },
                     {
                         name: 'Mwangaza Roshanee Agency',
@@ -698,7 +704,8 @@ export default {
                         policyType: "Medical Insurance",
                         policyNo: "001",
                         policyValue: "4000000",
-                        commisionValue: "400000"
+                        commisionValue: "400000",
+                        invoiceNo: "002"
                     },
                     {
                         name: 'Mwangaza Roshanee Agency',
@@ -709,7 +716,8 @@ export default {
                         policyType: "Medical Insurance",
                         policyNo: "001",
                         policyValue: "4000000",
-                        commisionValue: "400000"
+                        commisionValue: "400000",
+                        invoiceNo: "002"
                     },
                     {
                         name: 'Mwangaza Roshanee Agency',
@@ -720,7 +728,8 @@ export default {
                         policyType: "Medical Insurance",
                         policyNo: "001",
                         policyValue: "4000000",
-                        commisionValue: "400000"
+                        commisionValue: "400000",
+                        invoiceNo: "002"
                     },
                     {
                         name: 'Mwangaza Roshanee Agency',
@@ -731,7 +740,8 @@ export default {
                         policyType: "Medical Insurance",
                         policyNo: "001",
                         policyValue: "4000000",
-                        commisionValue: "400000"
+                        commisionValue: "400000",
+                        invoiceNo: "002"
                     },
                     {
                         name: 'Mwangaza Roshanee Agency',
@@ -742,7 +752,8 @@ export default {
                         policyType: "Medical Insurance",
                         policyNo: "001",
                         policyValue: "4000000",
-                        commisionValue: "400000"
+                        commisionValue: "400000",
+                        invoiceNo: "002"
                     },
                     {
                         name: 'Mwangaza Roshanee Agency',
@@ -753,7 +764,8 @@ export default {
                         policyType: "Medical Insurance",
                         policyNo: "001",
                         policyValue: "4000000",
-                        commisionValue: "400000"
+                        commisionValue: "400000",
+                        invoiceNo: "002"
                     },
                     {
                         name: 'Mwangaza Roshanee Agency',
@@ -764,7 +776,8 @@ export default {
                         policyType: "Medical Insurance",
                         policyNo: "001",
                         policyValue: "4000000",
-                        commisionValue: "400000"
+                        commisionValue: "400000",
+                        invoiceNo: "002"
                     },
                     {
                         name: 'Mwangaza Roshanee Agency',
@@ -775,7 +788,8 @@ export default {
                         policyType: "Medical Insurance",
                         policyNo: "001",
                         policyValue: "4000000",
-                        commisionValue: "400000"
+                        commisionValue: "400000",
+                        invoiceNo: "002"
                     }
                 ]
             },
