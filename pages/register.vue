@@ -1,13 +1,12 @@
 <template>
   <v-row>
-    <v-col cols="12" sm="12" md="12" class="full-height-background bg-blue d-flex justify-center align-center">
+    <v-col cols="12" class="h-100 bg-blue d-flex justify-center align-center">
       <v-card class="half-height-background bg-teal pa-10 rounded-lg">
         <h1 class="text-center color-blue">Register</h1>
-        <!-- <p class="text-center py-3">Are you an insurance brokerage firm or an insurance agent?
+        <p class="text-center py-3">Are you an insurance brokerage firm or an insurance agent?
           Are you tired of waiting for your insurance commision to get paid? You are the in the right place. By
-          using our platform you dont have to wait for 45-60 days to get paid.Get paid faster, what are you waiting for
-          register now?
-        </p> -->
+          using our platform you dont have to wait for 45-60 days to get paid.Register with us and get paid faster.
+        </p>
         <v-stepper v-model="e1">
           <v-stepper-header>
             <v-stepper-step :complete="e1 > 1" step="1">
@@ -134,9 +133,8 @@
 
 </template>
 <style scoped>
-.full-height-background {
-  width: 100vw;
-  height: 100vh;
+.h-100 {
+    height: 100vh
 }
 
 .half-height-background {
@@ -157,6 +155,13 @@
 
 .v-btn.active .v-icon {
   transform: rotate(-180deg);
+}
+
+@media only screen and (max-width: 600px) {
+  .half-height-background {
+    width: 90vw;
+  }
+
 }
 </style>
 <script>

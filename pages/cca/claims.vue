@@ -524,7 +524,7 @@
                                             <tr>
                                                 <td class="px-5">Invoice Copy :</td>
                                                 <td class="px-5">
-                                                    <a href="/policy.pdf" download="" target="_blank">Policy
+                                                    <a href="/invoice.pdf" download="" target="_blank">Invoice
                                                         Copy PDF</a>
                                                 </td>
                                             </tr>
