@@ -1,7 +1,7 @@
 <template>
     <v-container fluid class="bg-blue h-100">
         <v-row class="d-flex justify-center align-center h-100" no-gutters>
-            <v-col md="6" offset-md="1" class="rounded-lg">
+            <v-col md="6" class="rounded-lg">
                 <v-card class="indigo lighten-5 pa-10">
                     <h2 class="text-center py-3">Commission Claims App</h2>
 
@@ -86,7 +86,7 @@
 </template>
 <style scoped>
 .h-100 {
-    height: 100vh
+   min-height: 100vh
 }
 .color-blue {
     color: #3750EB;
