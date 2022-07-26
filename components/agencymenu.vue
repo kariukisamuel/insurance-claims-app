@@ -1,12 +1,38 @@
 <template>
-    <v-card elevation="4" color="#3750EB" class="d-flex justify-space-between pa-5 align-center">
+    <v-row no-gutters class="justify-space-between pa-5 bg-blue align-center">
+        <v-col>
+            <nuxt-link to="/">
+                <img src="~/static/logoipsum-logo-38.svg" />
+            </nuxt-link>
+        </v-col>
+        <v-col>
+            <v-row>
+                <v-col class="d-flex justify-end align-center">
+                    <NuxtLink to="/agencies/commision-claim" class="d-none d-sm-flex d-sm-none d-md-flex">
+                        <v-icon aria-label="check all" role="img" aria-hidden="false" color="#fff" size="32"> {{
+                                icons.mdiCashFast
+                        }}
+                        </v-icon>
+                        <span class="color-white pa-3">Commision Forfeiture Claims</span>
+                    </NuxtLink>
+                    <NuxtLink to="/" class="text-decoration-none">
+                        <v-btn color="error">
+                            Logout
+                        </v-btn>
+                    </NuxtLink>
+                </v-col>
+            </v-row>
+        </v-col>
+    </v-row>
+
+    <!-- <v-card elevation="4" color="#3750EB" class="d-flex justify-space-between pa-5 align-center">
         <div>
             <nuxt-link to="/">
                 <img src="~/static/logoipsum-logo-38.svg" />
             </nuxt-link>
         </div>
         <div class="d-flex d-none-xs d-none-sm">
-            <!-- <div class="text-center pl-4">
+            <div class="text-center pl-4">
                 <a href="">
                     <v-icon aria-label="check all" role="img" aria-hidden="false" color="#fff" size="32"> {{
                             icons.mdiHome
@@ -15,7 +41,7 @@
                     <span class="color-white pa-3">Dashboard</span>
                 </a>
 
-            </div> -->
+            </div>
             <div class="text-center pl-4">
                 <NuxtLink to="/agencies/commision-claim">
                     <v-icon aria-label="check all" role="img" aria-hidden="false" color="#fff" size="32"> {{
@@ -33,7 +59,7 @@
                 </nuxt-link>
             </div>
         </div>
-    </v-card>
+    </v-card> -->
 </template>
 <style>
 .color-blue {
