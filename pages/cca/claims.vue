@@ -582,6 +582,62 @@
 
                                     </v-col>
                                 </v-row>
+                                <v-row>
+                                    <v-col class="elevation-5  pa-5" cols="12" v-if="editedClaims.status === 3">
+                                        <h1>Pay Out</h1>
+                                        <v-radio-group v-model="radios">
+                                            <template v-slot:label>
+                                                <div><strong>Choose payment method ?</strong></div>
+                                            </template>
+                                            <v-radio value="Mpesa">
+                                                <template v-slot:label>
+                                                    <div>Mpesa
+                                                    </div>
+                                                </template>
+                                            </v-radio>
+                                            <v-radio value="Cheque">
+                                                <template v-slot:label>
+                                                    <div>Cheque
+                                                    </div>
+                                                </template>
+                                            </v-radio>
+                                            <v-radio value="RTGS">
+                                                <template v-slot:label>
+                                                    <div>RTGS
+                                                    </div>
+                                                </template>
+                                            </v-radio>
+                                        </v-radio-group>
+
+                                        <div v-if="radios === 'Mpesa'">
+                                            <v-text-field label="Enter Mpesa Number"></v-text-field>
+                                        </div>
+                                        <div v-else-if="radios === 'Cheque'">
+                                            <v-text-field label="Enter Cheque Number"></v-text-field>
+                                            <v-text-field label="Enter Drawers Name"></v-text-field>
+                                            <v-text-field label="Enter Drawee Name"></v-text-field>
+                                        </div>
+                                        <div v-else-if="radios === 'RTGS'">
+                                            <v-text-field label="Payee Name"></v-text-field>
+                                            <v-text-field label="Enter Bank Name"></v-text-field>
+                                            <v-text-field label="Enter Bank Code"></v-text-field>
+                                            <v-text-field label="Enter Branch Name"></v-text-field>
+                                            <v-text-field label="Enter Branch Code"></v-text-field>
+                                            <v-text-field label="Enter Account No"></v-text-field>
+                                        </div>
+                                        <div class="d-flex flex-wrap">
+                                            <v-btn class="ma-2" color="primary">
+                                                Approve Payment
+                                            </v-btn>
+                                            <v-btn class="ma-2" color="secondary">
+                                                Export To Excel
+                                            </v-btn>
+                                        </div>
+
+                                    </v-col>
+                                </v-row>
+
+
                             </v-container>
                         </v-card-text>
 
@@ -595,6 +651,15 @@
     </v-container>
 
 </template>
+<style>
+.bg-blue {
+    background-color: #3750EB;
+}
+
+.color-white {
+    color: #fff;
+}
+</style>
 <script scoped>
 import { mdiDotsVertical, mdiMicrosoftExcel } from "@mdi/js";
 
@@ -602,7 +667,7 @@ export default {
     name: "CcaClaimsPage",
     data() {
         return {
-
+            radios: '',
             date: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
             menu1: false,
             menu2: false,

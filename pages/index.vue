@@ -2,7 +2,7 @@
     <v-container fluid class="bg-blue h-100">
         <v-row class="d-flex justify-center align-center h-100" no-gutters>
             <v-col md="6" class="rounded-lg">
-                <v-card class="indigo lighten-5 pa-10">
+                <v-card class="white pa-10">
                     <h2 class="text-center py-3">Commission Claims App</h2>
 
                     <v-row>
