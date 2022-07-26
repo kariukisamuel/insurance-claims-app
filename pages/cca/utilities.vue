@@ -8,20 +8,21 @@
             </v-row>
             <v-row no-gutters class="pa-10">
                 <v-col cols="12">
-                    <v-card class="my-5 pa-4 d-flex justify-space-between">
+                    <v-card class="my-5 pa-4 d-flex flex-wrap justify-space-between">
                         <v-dialog v-model="dialogInsurance" hide-overlay transition="dialog-bottom-transition"
                             width="700">
                             <template v-slot:activator="{ on, attrs }">
-                                <v-btn color="primary" v-bind="attrs" v-on="on" class="pa-16">
+                                <v-btn color="primary" v-bind="attrs" v-on="on" class="pa-10 my-3">
                                     <v-icon left size="43">
                                         {{ icons.mdiOfficeBuilding }}
                                     </v-icon>
-                                    Add Supported Insurance Firms
+                                      <span class="text-wrap py-3" style="width: min-content; height:auto">  Add Insurance Firms</span>
+                                  
                                 </v-btn>
                             </template>
                             <v-card>
                                 <v-toolbar dark color="primary">
-                                    <v-btn icon dark @click="dialogInsurance = false">
+                                    <v-btn icon dark @click="dialogInsurance = false" class="pa-10 my-3">
                                         <v-icon>mdi-close</v-icon>
                                     </v-btn>
                                     <v-toolbar-title>Add Insurance Firms</v-toolbar-title>
@@ -56,19 +57,19 @@
                         <v-dialog v-model="dialogInsuranceType" hide-overlay transition="dialog-bottom-transition"
                             width="700">
                             <template v-slot:activator="{ on, attrs }">
-                                <v-btn color="primary" v-bind="attrs" v-on="on" class="pa-16">
+                                <v-btn color="primary" v-bind="attrs" v-on="on" class="pa-10 my-3">
                                     <v-icon left size="43">
                                         {{ icons.mdiFormatListBulletedType }}
                                     </v-icon>
-                                    Add Supported Insurance Types
+                                   <span class="text-wrap py-3" style="width: min-content; height:auto">Add Insurance Types</span> 
                                 </v-btn>
                             </template>
                             <v-card>
                                 <v-toolbar dark color="primary">
-                                    <v-btn icon dark @click="dialogInsurance = false">
+                                    <v-btn icon dark @click="dialogInsuranceType = false">
                                         <v-icon>mdi-close</v-icon>
                                     </v-btn>
-                                    <v-toolbar-title>Add Supported Insurance Types</v-toolbar-title>
+                                    <v-toolbar-title>Add Insurance Types</v-toolbar-title>
                                 </v-toolbar>
                                 <v-card-text>
 
@@ -95,11 +96,11 @@
                         </v-dialog>
                         <v-dialog v-model="dialogBank" hide-overlay transition="dialog-bottom-transition" width="700">
                             <template v-slot:activator="{ on, attrs }">
-                                <v-btn color="primary" v-bind="attrs" v-on="on" class="pa-16">
+                                <v-btn color="primary" v-bind="attrs" v-on="on" class="pa-10 my-3">
                                     <v-icon left size="43">
                                         {{ icons.mdiOfficeBuilding }}
                                     </v-icon>
-                                    Add Supported Banks
+                                   <span class="text-wrap py-3" style="width: min-content; height:auto">  Add Banks</span>
                                 </v-btn>
                             </template>
                             <v-card>
@@ -107,7 +108,7 @@
                                     <v-btn icon dark @click="dialogBank = false">
                                         <v-icon>mdi-close</v-icon>
                                     </v-btn>
-                                    <v-toolbar-title>Add Supported Banks</v-toolbar-title>
+                                    <v-toolbar-title>Add Banks</v-toolbar-title>
                                 </v-toolbar>
                                 <v-card-text>
                                     <v-container>
@@ -205,10 +206,10 @@
                     </v-card>
 
                     <v-card>
-                        <v-tabs fixed-tabs background-color="#3750EB" dark v-model="tabs">
-                            <v-tab href="#tab-1">Supported Insurance Firms</v-tab>
-                            <v-tab href="#tab-2">Supported Insurance Types</v-tab>
-                            <v-tab href="#tab-3">Supported Insurance Banks</v-tab>
+                        <v-tabs fixed-tabs background-color="#3750EB" show-arrows dark v-model="tabs">
+                            <v-tab href="#tab-1">Insurance Firms</v-tab>
+                            <v-tab href="#tab-2">Insurance Types</v-tab>
+                            <v-tab href="#tab-3">Insurance Banks</v-tab>
                         </v-tabs>
                         <v-tabs-items v-model="tabs">
                             <v-tab-item value="tab-1">
@@ -286,7 +287,7 @@
                                             single-line hide-details></v-text-field>
                                     </v-card-title>
                                     <v-card-text>
-                                        <v-data-table :headers="supportedBanks.headers" :items="supportedBanks.banks"
+                                        <v-data-table :headers="anks.headers" :items="anks.banks"
                                             :items-per-page="10" class="elevation-1">
                                             <template v-slot:item.actions="{ item }">
                                                 <v-icon small class="mr-2" @click="editItem(item)">
@@ -466,7 +467,7 @@ export default {
                     }
                 ]
             },
-            supportedBanks: {
+            anks: {
                 headers: [
                     {
                         text: 'Name',
